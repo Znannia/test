@@ -1,0 +1,376 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    background: #333;
+    color: #fff;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+header {
+    background: #422321;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.logo img {
+    max-width: 80px;
+}
+
+.header-center {
+    text-align: center;
+    flex: 1;
+}
+
+.welcome-text {
+    font-size: 16px;
+    color: #fc0;
+}
+
+.title {
+    color: #fc0;
+    text-decoration: none;
+}
+
+.title h1 {
+    font-size: 28px;
+}
+
+.subtitle {
+    font-size: 16px;
+    color: #ccc;
+}
+
+.header-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.youtube img {
+    max-width: 40px;
+}
+
+.subscribers {
+    color: #fc0;
+    font-size: 20px;
+}
+
+.subscribe-btn {
+    background: #f00;
+    color: #fff;
+    padding: 12px 24px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+    min-height: 48px;
+    display: inline-block;
+}
+
+.subscribe-btn:hover {
+    background: #c00;
+}
+
+.categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 15px;
+    background: #145252;
+    justify-content: center;
+}
+
+.category-btn {
+    background: #fc0;
+    color: #000;
+    padding: 12px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px;
+    min-height: 48px;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.category-btn:hover {
+    background: #e6b800;
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h2 {
+    color: #fc0;
+    font-size: 28px;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.video-grid:empty::after {
+    content: "Завантаження...";
+    text-align: center;
+    color: #fc0;
+    font-size: 20px;
+    padding: 20px;
+    display: block;
+}
+
+.video-item {
+    background: #222;
+    padding: 10px;
+    border-radius: 8px;
+    border: 2px solid #fc0;
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+}
+
+.video-container img,
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.new {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: #f00;
+    color: #fff;
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 14px;
+}
+
+.video-title {
+    font-size: 20px;
+    margin: 10px 0;
+    cursor: pointer;
+    color: #fff;
+}
+
+.video-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.comment-btn, .submit-comment, .share-btn {
+    background: #fc0;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    min-height: 48px;
+}
+
+.share-btn {
+    background: #145252;
+    color: #fff;
+}
+
+.like-container {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.heart {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.heart.liked {
+    color: red;
+}
+
+.comment-box {
+    margin-top: 10px;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #fc0;
+    background: #333;
+    color: #fff;
+    font-size: 16px;
+    min-height: 80px;
+}
+
+.comment-list p {
+    background: #145252;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 5px 0;
+    font-size: 16px;
+}
+
+.content-text {
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 18px;
+}
+
+.content-text p {
+    margin: 15px 0;
+}
+
+.content-text a {
+    color: #fc0;
+    text-decoration: none;
+}
+
+.content-text a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    background: #145252;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-left, .footer-center, .footer-right {
+    flex: 1;
+    min-width: 200px;
+    text-align: center;
+}
+
+.footer-youtube img {
+    max-width: 40px;
+}
+
+.footer-left p a {
+    color: #fc0;
+    text-decoration: none;
+}
+
+.footer-left p a:hover {
+    text-decoration: underline;
+}
+
+#categories-btn {
+    background: #fc0;
+    color: #000;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    min-height: 48px;
+}
+
+#categories-list {
+    list-style: none;
+    margin-top: 10px;
+}
+
+#categories-list li a {
+    color: #fc0;
+    text-decoration: none;
+    font-size: 16px;
+    display: block;
+    padding: 8px 0;
+}
+
+#categories-list li a:hover {
+    text-decoration: underline;
+}
+
+.footer-links a {
+    color: #fc0;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 16px;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+.footer-right img {
+    max-width: 80px;
+}
+
+.footer-right p {
+    margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .logo img, .footer-right img {
+        max-width: 60px;
+    }
+    .title h1 {
+        font-size: 24px;
+    }
+    .youtube img, .footer-youtube img {
+        max-width: 32px;
+    }
+    .subscribe-btn, .category-btn, #categories-btn {
+        padding: 10px 18px;
+        font-size: 16px;
+    }
+    .video-grid {
+        grid-template-columns: 1fr;
+    }
+    footer {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 16px;
+    }
+    h2 {
+        font-size: 24px;
+    }
+    .title h1 {
+        font-size: 20px;
+    }
+    .welcome-text, .subtitle {
+        font-size: 14px;
+    }
+    .subscribers {
+        font-size: 18px;
+    }
+    .content-text {
+        font-size: 16px;
+    }
+}
