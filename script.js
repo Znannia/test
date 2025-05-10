@@ -1,4 +1,4 @@
-const API_KEYS = ['AIzaSyANIlHucfoyt3cMP5d06cV4uQX3Xx-XPLE', 'AIzaSyAZRW_d8xXbCSudzTPPQ7pUqcLmH26MeuE'];
+const API_KEYS = ['AIzaSyANIlHucboyt3cMP5d06cV4uQX3Xx-XPLE', 'AIzaSyAZRW_d8xXbCSudzTPPQ7pUqcLmH26MeuE'];
 const CHANNEL_ID = "UC0usNaN5iwML35qPxASBDWQ";
 let currentKeyIndex = 0;
 
@@ -408,55 +408,45 @@ document.getElementById("categories-btn")?.addEventListener("click", () => {
   e.previousElementSibling.setAttribute("aria-expanded", t);
 });
 
-// Нова логіка для завантаження статей
+// Логіка для завантаження статей
 document.addEventListener('DOMContentLoaded', () => {
     const factsList = document.getElementById('facts-list');
-    const loadMoreBtn = document.getElementById('load-more-facts');
-    if (!factsList || !loadMoreBtn) return;
-
-    let displayedArticles = 6; // Показуємо 6 статей спочатку
-    const articlesPerLoad = 6; // Завантажуємо ще 6 за раз
-
-    function renderArticles(articles, startIndex, endIndex) {
-        const slice = articles.slice(startIndex, endIndex);
-        slice.forEach(article => {
-            const factItem = document.createElement('div');
-            factItem.className = 'fact-item';
-            factItem.innerHTML = `
-                <a href="${article.url}" class="fact-link">
-                    <img src="${article.thumbnail}" alt="${article.title}" class="thumbnail" loading="lazy">
-                    <h4>${article.title}</h4>
-                </a>
-                <div class="fact-lead">
-                    <p>${article.description}</p>
-                </div>
-            `;
-            factsList.appendChild(factItem);
-        });
-    }
+    if (!factsList) return;
 
     fetch('facts/articles/articles.json')
         .then(response => response.json())
         .then(articles => {
             factsList.innerHTML = ''; // Очищаємо статичний контент
+            articles.forEach(article => {
+                const factItem = document.createElement('div');
+                factItem.className = 'fact-item';
+                factItem.innerHTML = `
+                    <img src="${article.thumbnail}" alt="${article.title}" loading="lazy">
+                    <h4>${article.title}</h4>
+                    <div class="fact-lead">
+                        <p>${article.description}</p>
+                    </div>
+                    <button class="read-btn" data-url="${article.url}">Читати</button>
+                    <button class="more-btn">Більше</button>
+                `;
+                factsList.appendChild(factItem);
+            });
 
-            // Показуємо перші 6 статей
-            renderArticles(articles, 0, displayedArticles);
+            // Обробка кнопки "Більше"
+            factsList.addEventListener('click', (event) => {
+                if (event.target.classList.contains('more-btn')) {
+                    const factItem = event.target.closest('.fact-item');
+                    const factLead = factItem.querySelector('.fact-lead');
+                    factLead.style.display = factLead.style.display === 'block' ? 'none' : 'block';
+                    event.target.textContent = factLead.style.display === 'block' ? 'Менше' : 'Більше';
+                }
+            });
 
-            // Ховаємо кнопку, якщо статей ≤ 6
-            if (articles.length <= displayedArticles) {
-                loadMoreBtn.classList.add('hidden');
-            }
-
-            // Обробка кнопки Завантажити ще
-            loadMoreBtn.addEventListener('click', () => {
-                const startIndex = displayedArticles;
-                displayedArticles += articlesPerLoad;
-                renderArticles(articles, startIndex, displayedArticles);
-
-                // Ховаємо кнопку, якщо більше немає статей
-                if (displayedArticles >= articles.length) {
-                    loadMoreBtn.classList.add('hidden');
+            // Обробка кнопки "Читати"
+            factsList.addEventListener('click', (event) => {
+                if (event.target.classList.contains('read-btn')) {
+                    const url = event.target.dataset.url;
+                    window.location.href = url;
                 }
             });
         })
