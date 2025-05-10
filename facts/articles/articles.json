@@ -6,15 +6,21 @@
         "description": "Дізнайтесь про легендарні пам’ятки, які вражали людство тисячоліттями: від пірамід Гізи до Александрійського маяка."
     },
     {
-        "title": "5 дивовижних фактів про космос",
-        "url": "facts/articles/space-facts/",
-        "thumbnail": "facts/articles/space-facts/cover.jpg",
-        "description": "Чорні діри, зірки та галактики — відкрийте таємниці космосу через захопливі факти."
+        "title": "Традиції України: від минулого до сьогодення",
+        "url": "facts/articles/ukraine-traditions/",
+        "thumbnail": "facts/articles/ukraine-traditions/cover.jpg",
+        "description": "Поглибте знання про українські традиції, від вишиванок до святкових обрядів."
     },
     {
         "title": "Топ 10 фактів про Ватикан і Пап",
         "url": "facts/articles/vatican-popes/",
         "thumbnail": "facts/articles/vatican-popes/cover.jpg",
         "description": "Таємниці Ватикану: як обирають Пап Римських, скандали, інтриги та найцікавіші факти про найменшу державу світу!"
+    },
+    {
+        "title": "Топ 15 слів, які прикрасять вашу мову",
+        "url": "facts/articles/rare-ukrainian-words/",
+        "thumbnail": "facts/articles/rare-ukrainian-words/cover.jpg",
+        "description": "Дізнайтесь про маловживані українські слова, які збагатять вашу мову: від 'легіт' до 'смерека'."
     }
 ]
