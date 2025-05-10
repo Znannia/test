@@ -25,11 +25,12 @@
     text-align: center;
 }
 
-.facts-content .intro-section .title-wrapper h2 {
-    color: #ffffff !important; /* Білий колір для заголовка з високим пріоритетом */
-    background: none !important; /* Видаляємо градієнт */
-    -webkit-background-clip: initial !important; /* Скидаємо градієнт */
-    -webkit-text-fill-color: #ffffff !important; /* Гарантуємо білий колір тексту */
+.facts-content .intro-section .title-wrapper h2#article-title {
+    color: #ffffff !important;
+    background: none !important;
+    background-image: none !important;
+    -webkit-background-clip: initial !important;
+    -webkit-text-fill-color: #ffffff !important;
     font-size: 32px;
     margin-bottom: 10px;
     text-align: center;
@@ -151,7 +152,7 @@
     flex: 0 0 auto;
     padding: 10px;
     border-radius: 8px;
-    background-color: rgba(255, 215, 0, 0.3); /* Виразний жовтий відтінок */
+    background-color: rgba(255, 215, 0, 0.3);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
@@ -194,7 +195,7 @@
 
 .share-icon:hover {
     transform: scale(1.1);
-    box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 8px rgba(255, 255, 0, 0.5);
 }
 
 .share-icon.facebook {
@@ -202,18 +203,19 @@
 }
 
 .share-icon.x {
-    background-color: #000000; /* Чорний фон для іконки X */
+    background-color: #000000;
 }
 
 .share-icon.x img.share-icon-img {
-    width: 20px !important; /* Масштабуємо іконку X */
+    width: 20px !important;
     height: 20px !important;
     object-fit: contain !important;
     display: block;
+    filter: brightness(1.2) contrast(1.2);
 }
 
 .share-icon-img {
-    width: 20px; /* Відповідність розміру шрифту Font Awesome */
+    width: 20px;
     height: 20px;
     object-fit: contain;
 }
