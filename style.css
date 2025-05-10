@@ -95,7 +95,7 @@ h1 a {
     display: inline-block;
     padding: 5px 10px;
     border-radius: 8px;
-    box-shadow: 0  Ascents: 0 4px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     margin: 5px 0;
 }
 
@@ -216,10 +216,6 @@ h1 a {
     gap: 20px;
     max-width: 1200px;
     margin: 0 auto;
-}
-
-#latest-videos {
-    grid-template-columns: repeat(3, 1fr); /* Завжди 3 відео в одному рядку */
 }
 
 .video-item, .fact-item {
@@ -518,8 +514,7 @@ footer {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-.about-text p, .contact-text p, .coll```css
-collaboration-text p, .privacy-text p {
+.about-text p, .contact-text p, .collaboration-text p, .privacy-text p {
     margin: 10px 0;
     line-height: 1.6;
 }
@@ -548,8 +543,8 @@ collaboration-text p, .privacy-text p {
 }
 
 .intro-text {
-    width: 95%; /* Розширено рамочку на майже всю ширину екрану */
-    max-width: 1200px; /* Обмеження для дуже широких екранів */
+    width: 95%;
+    max-width: 1200px;
     margin: 20px auto;
     padding: 15px;
     color: #ffffff;
@@ -761,6 +756,10 @@ collaboration-text p, .privacy-text p {
 
     #category-videos {
         max-width: 100%;
+    }
+
+    #latest-videos {
+        grid-template-columns: 1fr; /* Одне відео на всю ширину для мобільної версії */
     }
 
     footer {
