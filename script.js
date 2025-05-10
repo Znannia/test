@@ -190,7 +190,16 @@ async function renderVideos(e, t, a = false) {
   });
 }
 
-// Оновлено для обмеження кількості відео
+// Додано обробку кнопки "Більше" для статей
+document.addEventListener("click", e => {
+  const target = e.target;
+  if (target.matches(".fact-item .more-btn")) {
+    const lead = target.previousElementSibling;
+    lead.style.display = lead.style.display === "none" ? "block" : "none";
+    target.textContent = lead.style.display === "none" ? "Більше" : "Менше";
+  }
+});
+
 const VIDEOS_PER_PAGE = 6;
 
 async function fetchLatestVideos() {
@@ -199,24 +208,248 @@ async function fetchLatestVideos() {
   const t = "latestVideos", a = "latestVideosTime", n = 864e5;
   e.classList.add("loading");
   const s = localStorage.getItem(t), i = localStorage.getItem(a), r = Date.now();
+  let currentPage = 1;
   if (s && i && r - i < n) {
     let videos = JSON.parse(s).filter(e => e.id && e.id.videoId && e.snippet && e.snippet.title !== "Private video" && e.snippet.title !== "Deleted video");
-    videos = videos.slice(0, VIDEOS_PER_PAGE);
-    await renderVideos(videos, e, true);
+    const paginatedVideos = videos.slice(0, VIDEOS_PER_PAGE);
+    await renderVideos(paginatedVideos, e, true);
+    if (videos.length > VIDEOS_PER_PAGE) {
+      const loadMoreBtn = document.createElement("button");
+      loadMoreBtn.textContent = "Завантажити ще";
+      loadMoreBtn.className = "more-btn";
+      loadMoreBtn.onclick = () => {
+        currentPage++;
+        const startIndex = (currentPage - 1) * VIDEOS_PER_PAGE;
+        const endIndex = startIndex + VIDEOS_PER_PAGE;
+        const nextVideos = videos.slice(startIndex, endIndex);
+        renderVideos(nextVideos, e, true);
+        if (endIndex >= videos.length) loadMoreBtn.remove();
+      };
+      e.after(loadMoreBtn);
+    }
     localStorage.setItem(t, JSON.stringify(videos));
     e.classList.remove("loading");
     return;
   }
   try {
-    const n = await fetchWithKey(`https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${CHANNELভ
+    const n = await fetchWithKey(`https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${CHANNEL_ID}&maxResults=10&order=date&type=video`);
+    if (!n.ok) throw new Error(`Помилка API: ${n.status}`);
+    const s = await n.json();
+    let i = s.items.filter(e => e.id && e.id.videoId && e.snippet && e.snippet.title !== "Private video" && e.snippet.title !== "Deleted video"),
+        r = i.map(e => e.id.videoId), c = await filterNonShorts(r);
+    i = i.filter(e => c.includes(e.id.videoId));
+    const paginatedVideos = i.slice(0, VIDEOS_PER_PAGE);
+    if (paginatedVideos.length === 0) {
+      e.innerHTML = "<p>Немає доступних відео. Спробуйте пізніше.</p>";
+      e.classList.remove("loading");
+      return;
+    }
+    await renderVideos(paginatedVideos, e, true);
+    if (i.length > VIDEOS_PER_PAGE) {
+      const loadMoreBtn = document.createElement("button");
+      loadMoreBtn.textContent = "Завантажити ще";
+      loadMoreBtn.className = "more-btn";
+      loadMoreBtn.onclick = () => {
+        currentPage++;
+        const startIndex = (currentPage - 1) * VIDEOS_PER_PAGE;
+        const endIndex = startIndex + VIDEOS_PER_PAGE;
+        const nextVideos = i.slice(startIndex, endIndex);
+        renderVideos(nextVideos, e, true);
+        if (endIndex >= i.length) loadMoreBtn.remove();
+      };
+      e.after(loadMoreBtn);
+    }
+    localStorage.setItem(t, JSON.stringify(i));
+    localStorage.setItem(a, r.toString());
+  } catch (t) {
+    e.innerHTML = `<p>Помилка завантаження відео: ${t.message}. Спробуйте пізніше.</p>`;
+  } finally {
+    e.classList.remove("loading");
+  }
+}
 
-System: Вибачте, відповідь обірвалася через технічне обмеження. Я завершу аналіз, внесу всі необхідні зміни до файлів, врахую ваші побажання (опис над футером, акцент на розваги, розділ "Цікаві факти", збереження гедера/футера) і поверну оновлені та нові файли одним повідомленням. Я також перевірю кожен файл на валідність, сумісність із AdSense, SEO, UX і доступність.
+async function fetchRandomVideos() {
+  const e = document.getElementById("random-videos");
+  if (!e) return;
+  const t = "randomVideos", a = "randomVideosTime", n = 864e5;
+  e.classList.add("loading");
+  const s = localStorage.getItem(t), i = localStorage.getItem(a), r = Date.now();
+  let currentPage = 1;
+  if (s && i && r - i < n) {
+    let videos = JSON.parse(s).filter(e => e.snippet && e.snippet.resourceId && e.snippet.resourceId.videoId && e.snippet.title !== "Private video" && e.snippet.title !== "Deleted video");
+    const paginatedVideos = videos.slice(0, VIDEOS_PER_PAGE);
+    await renderVideos(paginatedVideos, e);
+    if (videos.length > VIDEOS_PER_PAGE) {
+      const loadMoreBtn = document.createElement("button");
+      loadMoreBtn.textContent = "Завантажити ще";
+      loadMoreBtn.className = "more-btn";
+      loadMoreBtn.onclick = () => {
+        currentPage++;
+        const startIndex = (currentPage - 1) * VIDEOS_PER_PAGE;
+        const endIndex = startIndex + VIDEOS_PER_PAGE;
+        const nextVideos = videos.slice(startIndex, endIndex);
+        renderVideos(nextVideos, e);
+        if (endIndex >= videos.length) loadMoreBtn.remove();
+      };
+      e.after(loadMoreBtn);
+    }
+    localStorage.setItem(t, JSON.stringify(videos));
+    e.classList.remove("loading");
+    return;
+  }
+  try {
+    const n = window.innerWidth;
+    let s = 15;
+    if (n >= 600 && n < 900) s = 12;
+    else if (n < 600) s = 9;
+    const i = [], r = Object.keys(playlistIds);
+    for (const t of r) {
+      const a = playlistIds[t], n = await fetchWithKey(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,status&playlistId=${a}&maxResults=50`);
+      if (!n.ok) continue;
+      const s = await n.json(), r = s.items.filter(e => e.snippet && e.snippet.resourceId && e.snippet.resourceId.videoId && e.snippet.title !== "Private video" && e.snippet.title !== "Deleted video" && e.status && e.status.privacyStatus === "public");
+      i.push(...r);
+    }
+    const c = i.map(e => e.snippet.resourceId.videoId), o = await filterNonShorts(c), l = i.filter(e => o.includes(e.snippet.resourceId.videoId));
+    l.sort(() => Math.random() - 0.5);
+    const paginatedVideos = l.slice(0, VIDEOS_PER_PAGE);
+    if (paginatedVideos.length === 0) {
+      e.innerHTML = "<p>Немає доступних відео. Спробуйте пізніше.</p>";
+      e.classList.remove("loading");
+      return;
+    }
+    await renderVideos(paginatedVideos, e);
+    if (l.length > VIDEOS_PER_PAGE) {
+      const loadMoreBtn = document.createElement("button");
+      loadMoreBtn.textContent = "Завантажити ще";
+      loadMoreBtn.className = "more-btn";
+      loadMoreBtn.onclick = () => {
+        currentPage++;
+        const startIndex = (currentPage - 1) * VIDEOS_PER_PAGE;
+        const endIndex = startIndex + VIDEOS_PER_PAGE;
+        const nextVideos = l.slice(startIndex, endIndex);
+        renderVideos(nextVideos, e);
+        if (endIndex >= l.length) loadMoreBtn.remove();
+      };
+      e.after(loadMoreBtn);
+    }
+    localStorage.setItem(t, JSON.stringify(l));
+    localStorage.setItem(a, r.toString());
+  } catch (t) {
+    e.innerHTML = `<p>Помилка завантаження відео: ${t.message}. Спробуйте пізніше.</p>`;
+  } finally {
+    e.classList.remove("loading");
+  }
+}
 
----
+async function fetchCategoryVideos() {
+  const e = document.getElementById("category-videos");
+  if (!e) return;
+  let t = e.dataset.category || "", a = playlistIds[t] || "";
+  if (!t || !(t = new URLSearchParams(window.location.search).get("category") || "", a = playlistIds[t] || "", Object.keys(playlistIds).includes(t)) && window.location.pathname.includes("category.html")) {
+    window.location.replace("https://www.znannia.online/");
+    return;
+  }
+  const n = document.getElementById("category-title");
+  if (n) n.textContent = t || "Вікторини та тести";
+  const s = document.getElementById("category-description");
+  if (s) s.textContent = categoryDescriptions[t] || "Цікаві тести та вікторини для всієї родини!";
+  document.title = `Вікторини з ${t || "Категорії"} - Знання для всіх`;
+  const i = document.querySelector('meta[name="description"]');
+  if (i) i.setAttribute("content", categoryDescriptions[t] || "Дивіться вікторини та тести з категорії на YouTube-каналі Знання для всіх. Цікаво для всієї родини!");
+  const r = document.querySelector('meta[name="keywords"]') || document.createElement("meta");
+  r.name = "keywords";
+  r.content = `знання для всіх, вікторини, тести, ${t || "категорії"}, освіта, розваги для родини`;
+  document.head.appendChild(r);
+  const c = document.createElement("link");
+  c.rel = "canonical";
+  c.href = window.location.href;
+  document.head.appendChild(c);
+  const o = `categoryVideos_${t}`, l = `categoryVideosTime_${t}`, d = 864e5;
+  e.classList.add("loading");
+  const m = localStorage.getItem(o), g = localStorage.getItem(l), h = Date.now();
+  let currentPage = 1;
+  if (m && g && h - g < d) {
+    let videos = JSON.parse(m).filter(e => e.snippet && e.snippet.title && e.snippet.title !== "Private video" && e.snippet.title !== "Deleted video" && e.snippet.resourceId && e.snippet.resourceId.videoId);
+    const paginatedVideos = videos.slice(0, VIDEOS_PER_PAGE);
+    if (paginatedVideos.length === 0) {
+      e.innerHTML = "<p>Немає доступних відео.</p>";
+      e.classList.remove("loading");
+      return;
+    }
+    await renderVideos(paginatedVideos, e);
+    if (videos.length > VIDEOS_PER_PAGE) {
+      const loadMoreBtn = document.createElement("button");
+      loadMoreBtn.textContent = "Завантажити ще";
+      loadMoreBtn.className = "more-btn";
+      loadMoreBtn.onclick = () => {
+        currentPage++;
+        const startIndex = (currentPage - 1) * VIDEOS_PER_PAGE;
+        const endIndex = startIndex + VIDEOS_PER_PAGE;
+        const nextVideos = videos.slice(startIndex, endIndex);
+        renderVideos(nextVideos, e);
+        if (endIndex >= videos.length) loadMoreBtn.remove();
+      };
+      e.after(loadMoreBtn);
+    }
+    localStorage.setItem(o, JSON.stringify(videos));
+    e.classList.remove("loading");
+    return;
+  }
+  try {
+    if (!a) throw new Error("Категорія не знайдена");
+    const n = await fetchWithKey(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,status&playlistId=${a}&maxResults=50`);
+    if (!n.ok) throw new Error(`Помилка API: ${n.status}`);
+    const s = await n.json();
+    let i = s.items.filter(e => e.snippet && e.snippet.resourceId && e.snippet.resourceId.videoId && e.snippet.title && e.snippet.title !== "Private video" && e.snippet.title !== "Deleted video" && e.status && e.status.privacyStatus === "public"),
+        r = i.map(e => e.snippet.resourceId.videoId), c = await filterNonShorts(r, t);
+    i = i.filter(e => c.includes(e.snippet.resourceId.videoId));
+    const paginatedVideos = i.slice(0, VIDEOS_PER_PAGE);
+    if (paginatedVideos.length === 0) {
+      const t = await fetch("/fallback-videos.json");
+      if (t.ok) i = await t.json();
+      else {
+        e.innerHTML = "<p>Немає доступних відео.</p>";
+        e.classList.remove("loading");
+        return;
+      }
+    }
+    await renderVideos(paginatedVideos, e);
+    if (i.length > VIDEOS_PER_PAGE) {
+      const loadMoreBtn = document.createElement("button");
+      loadMoreBtn.textContent = "Завантажити ще";
+      loadMoreBtn.className = "more-btn";
+      loadMoreBtn.onclick = () => {
+        currentPage++;
+        const startIndex = (currentPage - 1) * VIDEOS_PER_PAGE;
+        const endIndex = startIndex + VIDEOS_PER_PAGE;
+        const nextVideos = i.slice(startIndex, endIndex);
+        renderVideos(nextVideos, e);
+        if (endIndex >= i.length) loadMoreBtn.remove();
+      };
+      e.after(loadMoreBtn);
+    }
+    localStorage.setItem(o, JSON.stringify(i));
+    localStorage.setItem(l, h.toString());
+  } catch (t) {
+    try {
+      const a = await fetch("/fallback-videos.json");
+      if (a.ok) await renderVideos(await a.json(), e);
+      else e.innerHTML = `<p>Помилка завантаження відео: ${t.message}. Спробуйте пізніше.</p>`;
+    } catch (a) {
+      e.innerHTML = `<p>Помилка завантаження відео: ${t.message}. Спробуйте пізніше.</p>`;
+    }
+  } finally {
+    e.classList.remove("loading");
+  }
+}
 
-### Завершення аналізу та внесення змін
+document.getElementById("categories-btn")?.addEventListener("click", () => {
+  const e = document.getElementById("categories-list"), t = e.style.display === "none";
+  e.style.display = t ? "block" : "none";
+  e.previousElementSibling.setAttribute("aria-expanded", t);
+});
 
-#### Ваші побажання:
-1. **Опис сайту**:
-   - Перемістити над футер, уникати згадок НМТ.
-   - Ак
+fetchSubscribers();
+document.getElementById("latest-videos") && fetchLatestVideos();
+document.getElementById("random-videos") && fetchRandomVideos();
+document.getElementById("category-videos") && fetchCategoryVideos();
