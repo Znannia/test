@@ -1,7 +1,6 @@
 // category.js
 const API_KEYS = [
-  'AIzaSyAZRW_d8xXbCSudzTPPQ7pUqcLmH26MeuE',
-  'AIzaSyANIlHucfoyt3cMP5d06cV4uQX3Xx-XPLE',
+  'AIzaSyANIlHucfoyt3cMP5d06cV4uQX3Xx-XPLE', 'AIzaSyAZRW_d8xXbCSudzTPPQ7pUqcLmH26MeuE',
 ];
 let currentKeyIndex = 0;
 
