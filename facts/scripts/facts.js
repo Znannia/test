@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Відстеження активності через Google Analytics
-    // Кліки по посиланнях YouTube
+    // Відстеження кліків по посиланнях YouTube
     const youtubeLinks = document.querySelectorAll('a[href*="youtube.com"]');
     youtubeLinks.forEach(link => {
         link.addEventListener('click', () => {
@@ -28,28 +27,25 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(section);
     });
 
-    // Логіка кнопки "Поділитися"
-    const shareButton = document.querySelector('.share-button');
-    const sharePanel = document.querySelector('.share-panel');
+    // Відстеження кліків по соцмережах
+    const shareLinks = document.querySelectorAll('.share-panel a');
+    shareLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            gtag('event', 'share', {
+                'event_category': 'Social Share',
+                'event_label': link.getAttribute('data-network')
+            });
+        });
+    });
 
-    if (shareButton && sharePanel) {
-        shareButton.addEventListener('click', () => {
-            sharePanel.classList.toggle('active');
+    // Відстеження кліків по кнопках навігації
+    const navButtons = document.querySelectorAll('.nav-button');
+    navButtons.forEach(button => {
+        button.addEventListener('click', () => {
             gtag('event', 'click', {
-                'event_category': 'Share Button',
-                'event_label': 'Share Panel Toggle'
+                'event_category': 'Navigation Button',
+                'event_label': button.textContent
             });
         });
-
-        // Відстеження кліків по соцмережах
-        const shareLinks = sharePanel.querySelectorAll('a');
-        shareLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                gtag('event', 'share', {
-                    'event_category': 'Social Share',
-                    'event_label': link.getAttribute('data-network')
-                });
-            });
-        });
-    }
+    });
 });
