@@ -188,29 +188,6 @@ async function fetchLatestVideos() {
   const t = "latestVideos", a = "latestVideosTime", n = 864e5;
   e.classList.add("loading");
   const s = localStorage.getItem(t), i = localStorage.getItem(a), r = Date.now();
-  let currentPage = 1;
-  if (s && i && r - i < n) {
-    let videos = JSON.parse(s).filter(e => e.id && e.id.videoId && e.snippet && e.snippet.title !== "Private video" && e.snippet.title !== "Deleted video");
-    const paginatedVideos = videos.slice(0, VIDEOS_PER_PAGE);
-    await renderVideos(paginatedVideos, e, true);
-    if (videos.length > VIDEOS_PER_PAGE) {
-      const loadMoreBtn = document.createElement("button");
-      loadMoreBtn.textContent = "Завантажити ще";
-      loadMoreBtn.className = "more-btn load-more";
-      loadMoreBtn.onclick = () => {
-        currentPage++;
-        const startIndex = (currentPage - 1) * VIDEOS_PER_PAGE;
-        const endIndex = startIndex + VIDEOS_PER_PAGE;
-        const nextVideos = videos.slice(startIndex, endIndex);
-        renderVideos(nextVideos, e, true);
-        if (endIndex >= videos.length) loadMoreBtn.remove();
-      };
-      e.after(loadMoreBtn);
-    }
-    localStorage.setItem(t, JSON.stringify(videos));
-    e.classList.remove("loading");
-    return;
-  }
   try {
     const n = await fetchWithKey(`https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${CHANNEL_ID}&maxResults=10&order=date&type=video`);
     if (!n.ok) throw new Error(`Помилка API: ${n.status}`);
@@ -225,20 +202,6 @@ async function fetchLatestVideos() {
       return;
     }
     await renderVideos(paginatedVideos, e, true);
-    if (i.length > VIDEOS_PER_PAGE) {
-      const loadMoreBtn = document.createElement("button");
-      loadMoreBtn.textContent = "Завантажити ще";
-      loadMoreBtn.className = "more-btn load-more";
-      loadMoreBtn.onclick = () => {
-        currentPage++;
-        const startIndex = (currentPage - 1) * VIDEOS_PER_PAGE;
-        const endIndex = startIndex + VIDEOS_PER_PAGE;
-        const nextVideos = i.slice(startIndex, endIndex);
-        renderVideos(nextVideos, e, true);
-        if (endIndex >= i.length) loadMoreBtn.remove();
-      };
-      e.after(loadMoreBtn);
-    }
     localStorage.setItem(t, JSON.stringify(i));
     localStorage.setItem(a, r.toString());
   } catch (t) {
@@ -257,16 +220,29 @@ async function fetchRandomVideos() {
   let currentPage = 1;
   if (s && i && r - i < n) {
     let videos = JSON.parse(s).filter(e => e.snippet && e.snippet.resourceId && e.snippet.resourceId.videoId && e.snippet.title !== "Private video" && e.snippet.title !== "Deleted video");
-    const paginatedVideos = videos.slice(0, VIDEOS_PER_PAGE);
+    const paginatedVideos = videos.slice(0, VIDEOS_PER_PAGE * 3); // Завантажуємо 3 ряди
     await renderVideos(paginatedVideos, e);
-    if (videos.length > VIDEOS_PER_PAGE) {
+    if (videos.length > VIDEOS_PER_PAGE * 3) {
       const loadMoreBtn = document.createElement("button");
       loadMoreBtn.textContent = "Завантажити ще";
       loadMoreBtn.className = "more-btn load-more";
+      loadMoreBtn.style.display = "block";
+      loadMoreBtn.style.margin = "20px auto";
+      loadMoreBtn.style.padding = "12px 24px";
+      loadMoreBtn.style.fontSize = "18px";
+      loadMoreBtn.style.fontWeight = "bold";
+      loadMoreBtn.style.backgroundColor = "#ff0000";
+      loadMoreBtn.style.color = "#ffffff";
+      loadMoreBtn.style.border = "none";
+      loadMoreBtn.style.borderRadius = "5px";
+      loadMoreBtn.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.3)";
+      loadMoreBtn.style.cursor = "pointer";
+      loadMoreBtn.onmouseover = () => loadMoreBtn.style.backgroundColor = "#cc0000";
+      loadMoreBtn.onmouseout = () => loadMoreBtn.style.backgroundColor = "#ff0000";
       loadMoreBtn.onclick = () => {
         currentPage++;
-        const startIndex = (currentPage - 1) * VIDEOS_PER_PAGE;
-        const endIndex = startIndex + VIDEOS_PER_PAGE;
+        const startIndex = (currentPage - 1) * VIDEOS_PER_PAGE * 3;
+        const endIndex = startIndex + VIDEOS_PER_PAGE * 3;
         const nextVideos = videos.slice(startIndex, endIndex);
         renderVideos(nextVideos, e);
         if (endIndex >= videos.length) loadMoreBtn.remove();
@@ -279,9 +255,9 @@ async function fetchRandomVideos() {
   }
   try {
     const n = window.innerWidth;
-    let s = 15;
-    if (n >= 600 && n < 900) s = 12;
-    else if (n < 600) s = 9;
+    let s = 15; // 3 ряди по 5 відео для широких екранів
+    if (n >= 600 && n < 900) s = 12; // 3 ряди по 4 відео
+    else if (n < 600) s = 9; // 3 ряди по 3 відео
     const i = [], r = Object.keys(playlistIds);
     for (const t of r) {
       const a = playlistIds[t], n = await fetchWithKey(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,status&playlistId=${a}&maxResults=50`);
@@ -291,24 +267,37 @@ async function fetchRandomVideos() {
     }
     const c = i.map(e => e.snippet.resourceId.videoId), o = await filterNonShorts(c), l = i.filter(e => o.includes(e.snippet.resourceId.videoId));
     l.sort(() => Math.random() - 0.5);
-    const paginatedVideos = l.slice(0, VIDEOS_PER_PAGE);
+    const paginatedVideos = l.slice(0, s); // Завантажуємо 9, 12 або 15 відео
     if (paginatedVideos.length === 0) {
       e.innerHTML = "<p>Немає доступних відео. Спробуйте пізніше.</p>";
       e.classList.remove("loading");
       return;
     }
     await renderVideos(paginatedVideos, e);
-    if (l.length > VIDEOS_PER_PAGE) {
+    if (l.length > s) {
       const loadMoreBtn = document.createElement("button");
       loadMoreBtn.textContent = "Завантажити ще";
       loadMoreBtn.className = "more-btn load-more";
+      loadMoreBtn.style.display = "block";
+      loadMoreBtn.style.margin = "20px auto";
+      loadMoreBtn.style.padding = "12px 24px";
+      loadMoreBtn.style.fontSize = "18px";
+      loadMoreBtn.style.fontWeight = "bold";
+      loadMoreBtn.style.backgroundColor = "#ff0000";
+      loadMoreBtn.style.color = "#ffffff";
+      loadMoreBtn.style.border = "none";
+      loadMoreBtn.style.borderRadius = "5px";
+      loadMoreBtn.style.boxShadow = "0 4px 8px rgba(0, 0, 0, 0.3)";
+      loadMoreBtn.style.cursor = "pointer";
+      loadMoreBtn.onmouseover = () => loadMoreBtn.style.backgroundColor = "#cc0000";
+      loadMoreBtn.onmouseout = () => loadMoreBtn.style.backgroundColor = "#ff0000";
       loadMoreBtn.onclick = () => {
         currentPage++;
-        const startIndex = (currentPage - 1) * VIDEOS_PER_PAGE;
-        const endIndex = startIndex + VIDEOS_PER_PAGE;
+        const startIndex = (currentPage - 1) * s;
+        const endIndex = startIndex + s;
         const nextVideos = l.slice(startIndex, endIndex);
         renderVideos(nextVideos, e);
-        if (endIndex >= i.length) loadMoreBtn.remove();
+        if (endIndex >= l.length) loadMoreBtn.remove();
       };
       e.after(loadMoreBtn);
     }
