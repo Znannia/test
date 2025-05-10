@@ -84,10 +84,38 @@
     </div>
     <div class="facts-content">
         <h2>{{TITLE}}</h2>
-        <img src="./cover.jpg" alt="{{TITLE}}" class="article-image" loading="lazy">
+        <div class="share-nav">
+            <a href="../../index.html" class="nav-btn">На головну сторінку</a>
+            <div class="share-container">
+                <button class="share-btn">Поділитися</button>
+                <div class="share-icons" style="display: none;">
+                    <a href="https://www.facebook.com/sharer/sharer.php?u={{URL}}" target="_blank" class="share-icon facebook"><img src="../../icons/facebook.png" alt="Facebook"></a>
+                    <a href="https://twitter.com/intent/tweet?url={{URL}}&text={{TITLE}}" target="_blank" class="share-icon twitter"><img src="../../icons/twitter.png" alt="X"></a>
+                    <a href="https://api.whatsapp.com/send?text={{TITLE}}%20{{URL}}" target="_blank" class="share-icon whatsapp"><img src="../../icons/whatsapp.png" alt="WhatsApp"></a>
+                    <a href="viber://forward?text={{TITLE}}%20{{URL}}" target="_blank" class="share-icon viber"><img src="../../icons/viber.png" alt="Viber"></a>
+                </div>
+            </div>
+            <a href="../../facts.html" class="nav-btn">До інших цікавинок</a>
+        </div>
         <div class="article-text">
-            <!-- Вміст статті -->
-            {{CONTENT}}
+            <!-- Перший абзац (лід) -->
+            {{LEAD_PARAGRAPH}}
+            <img src="./cover.jpg" alt="{{TITLE}}" class="article-image" loading="lazy">
+            <!-- Решта вмісту статті -->
+            {{REMAINING_CONTENT}}
+        </div>
+        <div class="share-nav">
+            <a href="../../index.html" class="nav-btn">На головну сторінку</a>
+            <div class="share-container">
+                <button class="share-btn">Поділитися</button>
+                <div class="share-icons" style="display: none;">
+                    <a href="https://www.facebook.com/sharer/sharer.php?u={{URL}}" target="_blank" class="share-icon facebook"><img src="../../icons/facebook.png" alt="Facebook"></a>
+                    <a href="https://twitter.com/intent/tweet?url={{URL}}&text={{TITLE}}" target="_blank" class="share-icon twitter"><img src="../../icons/twitter.png" alt="X"></a>
+                    <a href="https://api.whatsapp.com/send?text={{TITLE}}%20{{URL}}" target="_blank" class="share-icon whatsapp"><img src="../../icons/whatsapp.png" alt="WhatsApp"></a>
+                    <a href="viber://forward?text={{TITLE}}%20{{URL}}" target="_blank" class="share-icon viber"><img src="../../icons/viber.png" alt="Viber"></a>
+                </div>
+            </div>
+            <a href="../../facts.html" class="nav-btn">До інших цікавинок</a>
         </div>
     </div>
     <footer role="contentinfo">
@@ -124,5 +152,13 @@
     </footer>
     <script src="../../script.js"></script>
     <script src="../scripts/facts.js"></script>
+    <script>
+        document.querySelectorAll('.share-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const icons = btn.nextElementSibling;
+                icons.style.display = icons.style.display === 'none' ? 'flex' : 'none';
+            });
+        });
+    </script>
 </body>
 </html>
