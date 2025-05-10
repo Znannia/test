@@ -2,10 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 .facts-content {
-    max-width: 900px; /* Зменшено з 1200px для узгодження з вашим дизайном */
+    max-width: 900px;
     margin: 20px auto;
     padding: 30px;
-    background-color: #0a2f2f; /* Темніший фон, ніж #145252 у style.css */
+    background-color: #0a2f2f;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
@@ -26,7 +26,7 @@
 }
 
 .facts-content h2 {
-    color: #ffffff !important; /* Залишаємо білий, як просили */
+    color: #ffffff !important; /* Білий колір для заголовка з високим пріоритетом */
     font-size: 32px;
     margin-bottom: 10px;
     text-align: center;
@@ -49,7 +49,7 @@
 }
 
 .article-text {
-    font-size: 18px; /* Збільшено з 16px у style.css для кращої читабельності */
+    font-size: 18px;
     line-height: 1.7;
     color: #ffffff;
 }
@@ -64,7 +64,7 @@
 
 .article-section h3 {
     color: #ffcc00;
-    font-size: 26px; /* Збільшено з 24px у style.css */
+    font-size: 26px;
     margin-bottom: 10px;
 }
 
@@ -82,25 +82,23 @@
 }
 
 .article-image {
-    max-width: 300px; /* Узгоджено зі style.css */
+    max-width: 100%;
     height: auto;
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    float: right; /* Узгоджено зі style.css */
-    margin-left: 20px; /* Узгоджено зі style.css */
-    margin-bottom: 10px; /* Узгоджено зі style.css */
-    border: 2px solid transparent; /* Додано з facts.css */
-    border-image: linear-gradient(to right, #FFD700, #FF0000) 1; /* Додано з facts.css */
+    object-fit: cover;
+    margin: 20px auto;
+    display: block;
+    border: 2px solid transparent;
+    border-image: linear-gradient(to right, #FFD700, #FF0000) 1;
 }
 
-/* Відео-контейнер (перейменовано з .video-container на .article-video для узгодження з HTML) */
 .article-video {
     position: relative;
-    padding-bottom: 56.25%; /* 16:9 */
-    height: 0;
-    overflow: hidden;
-    max-width: 600px; /* Зменшено з 100% для кращого вигляду */
-    margin: 20px auto; /* Центрування */
+    width: 100%;
+    max-width: 600px;
+    aspect-ratio: 16 / 9;
+    margin: 20px auto;
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
@@ -235,19 +233,12 @@
         font-size: 16px;
     }
 
-    .article-section {
-        padding: 10px;
-    }
-
     .article-section h3 {
         font-size: 22px;
     }
 
     .article-image {
-        float: none;
-        max-width: 100%;
         margin: 15px auto;
-        display: block;
     }
 
     .article-video {
