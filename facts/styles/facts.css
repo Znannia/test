@@ -200,7 +200,12 @@
 
 .share-icon.x {
     background-color: #000000; /* Чорний фон для іконки X */
-    color: #ffffff;
+}
+
+.share-icon-img {
+    width: 20px; /* Відповідність розміру шрифту Font Awesome */
+    height: 20px;
+    object-fit: contain; /* Зберігає пропорції зображення */
 }
 
 .share-icon.whatsapp {
