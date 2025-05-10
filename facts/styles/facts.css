@@ -2,17 +2,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 .facts-content {
-    max-width: 900px; /* Звужуємо колонку тексту (було 1200px) */
+    max-width: 900px;
     margin: 20px auto;
-    padding: 30px; /* Збільшуємо бічні відступи */
-    background-color: #0a2f2f; /* Контрастніше тло (темніше, ніж #145252) */
+    padding: 30px;
+    background-color: #0a2f2f;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .facts-content h2 {
     color: #ffff00;
-    font-size: 32px; /* Збільшуємо для десктопів */
+    font-size: 32px;
     margin-bottom: 20px;
     text-align: center;
     background: linear-gradient(to right, #FFD700, #FF0000);
@@ -21,22 +21,22 @@
 }
 
 .article-text {
-    font-size: 18px; /* Збільшуємо шрифт для десктопів (було 16px) */
-    line-height: 1.7; /* Покращуємо читабельність */
+    font-size: 18px;
+    line-height: 1.7;
     color: #ffffff;
 }
 
 .article-section {
     margin-bottom: 20px;
     padding: 15px;
-    background-color: #1a3c34; /* Контрастніше тло для секцій */
+    background-color: #1a3c34;
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .article-section h3 {
     color: #ffcc00;
-    font-size: 26px; /* Збільшуємо для десктопів */
+    font-size: 26px;
     margin-bottom: 10px;
 }
 
@@ -82,6 +82,99 @@
     border-radius: 5px;
 }
 
+/* Стилі для кнопок навігації та поширення */
+.share-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.nav-btn {
+    background-color: #ffcc00;
+    color: #000000;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s;
+}
+
+.nav-btn:hover {
+    background-color: #e6b800;
+}
+
+.share-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.share-btn {
+    background-color: #28a745;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s;
+}
+
+.share-btn:hover {
+    background-color: #218838;
+}
+
+.share-icons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    justify-content: center;
+}
+
+.share-icon {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    transition: transform 0.3s;
+}
+
+.share-icon img {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+}
+
+.share-icon:hover {
+    transform: scale(1.1);
+}
+
+.share-icon.facebook {
+    background-color: #3b5998;
+}
+
+.share-icon.twitter {
+    background-color: #000000;
+}
+
+.share-icon.whatsapp {
+    background-color: #25d366;
+}
+
+.share-icon.viber {
+    background-color: #665cac;
+}
+
 @media (max-width: 600px) {
     .facts-content {
         padding: 15px;
@@ -92,7 +185,7 @@
     }
 
     .article-text {
-        font-size: 16px; /* Менший шрифт для мобільних */
+        font-size: 16px;
     }
 
     .article-section h3 {
@@ -101,5 +194,19 @@
 
     .article-video {
         max-width: 100%;
+    }
+
+    .share-nav {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .nav-btn, .share-btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .share-icons {
+        flex-wrap: wrap;
     }
 }
