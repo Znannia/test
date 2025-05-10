@@ -222,18 +222,6 @@ h1 a {
     grid-template-columns: repeat(3, 1fr); /* Завжди 3 відео в одному рядку */
 }
 
-@media (max-width: 900px) {
-    #latest-videos {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-@media (max-width: 600px) {
-    #latest-videos {
-        grid-template-columns: 1fr; /* На малих екранах 1 відео в рядку */
-    }
-}
-
 .video-item, .fact-item {
     text-align: center;
     border: 2px solid #1a3c34;
@@ -322,21 +310,6 @@ h1 a {
     background-color: #e6b800;
 }
 
-.more-btn.load-more {
-    display: block;
-    margin: 20px auto;
-    background-color: #ff0000;
-    color: #ffffff;
-    padding: 12px 24px;
-    font-size: 18px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    transition: background-color 0.3s;
-}
-
-.more-btn.load-more:hover {
-    background-color: #cc0000;
-}
-
 .comment-box {
     margin-top: 10px;
     display: none;
@@ -398,41 +371,6 @@ h1 a {
     margin: 0;
     font-size: 14px;
     line-height: 1.5;
-}
-
-.fact-content {
-    margin-top: 20px;
-    background-color: #145252;
-    padding: 15px;
-    border-radius: 4px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.fact-content p {
-    margin: 10px 0;
-    line-height: 1.6;
-}
-
-.fact-content img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 4px;
-    margin: 10px 0;
-}
-
-.fact-content iframe {
-    max-width: 100%;
-    height: 169px;
-    border-radius: 4px;
-    margin: 10px 0;
-}
-
-.youtube-icon-small {
-    display: inline-block;
-    width: 24px;
-    height: 24px;
-    vertical-align: middle;
-    margin: 0 5px;
 }
 
 .new {
@@ -561,36 +499,36 @@ footer {
     margin: 20px 0;
 }
 
-.about, .contact, .collaboration, .privacy, .facts-text {
+.about, .contact, .collaboration, .privacy {
     padding: 20px;
     max-width: 800px;
     margin: 0 auto;
 }
 
-.about h2, .contact h2, .collaboration h2, .privacy h2, .facts-text h2 {
+.about h2, .contact h2, .collaboration h2, .privacy h2 {
     color: #ffff00;
     text-align: center;
     font-size: 28px;
 }
 
-.about-text, .contact-text, .collaboration-text, .privacy-text, .facts-text {
+.about-text, .contact-text, .collaboration-text, .privacy-text {
     background-color: #145252;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-.about-text p, .contact-text p, .collaboration-text p, .privacy-text p, .facts-text p {
+.about-text p, .contact-text p, .collaboration-text p, .privacy-text p {
     margin: 10px 0;
     line-height: 1.6;
 }
 
-.about-text a, .contact-text a, .collaboration-text a, .privacy-text a, .facts-text a {
+.about-text a, .contact-text a, .collaboration-text a, .privacy-text a {
     color: #ffcc00;
     text-decoration: none;
 }
 
-.about-text a:hover, .contact-text a:hover, .collaboration-text a:hover, .privacy-text a:hover, .facts-text a:hover {
+.about-text a:hover, .contact-text a:hover, .collaboration-text a:hover, .privacy-text a:hover {
     color: #e6b800;
 }
 
@@ -609,7 +547,8 @@ footer {
 }
 
 .intro-text {
-    max-width: 800px;
+    width: 95%; /* Розширено рамочку на майже всю ширину екрану */
+    max-width: 1200px; /* Обмеження для дуже широких екранів */
     margin: 20px auto;
     padding: 15px;
     color: #ffffff;
@@ -650,6 +589,14 @@ footer {
 
     .comment-btn, .more-btn {
         padding: 8px 12px;
+        font-size: 14px;
+    }
+
+    .heart {
+        font-size: 20px;
+    }
+
+    .like-count {
         font-size: 14px;
     }
 
@@ -720,13 +667,6 @@ footer {
         flex: 0 0 auto;
     }
 
-    .subscribers {
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        max-width: 150px;
-    }
-
     .subscribe-btn {
         font-size: 14px;
         padding: 6px 12px;
@@ -772,4 +712,71 @@ footer {
     .category-btn:nth-child(6) { order: 6; }
     .category-btn:nth-child(7) { order: 7; }
     .category-btn:nth-child(8) { order: 8; }
+
+    .video-actions {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        min-height: 50px;
+        padding: 0 5px;
+    }
+
+    .comment-btn {
+        padding: 10px;
+        font-size: 18px;
+        font-weight: bold;
+        flex: 1;
+        text-align: center;
+    }
+
+    .heart {
+        font-size: 32px;
+    }
+
+    .like-count {
+        font-size: 14px;
+    }
+
+    .more-btn {
+        padding: 10px;
+        font-size: 18px;
+        font-weight: bold;
+        flex: 1;
+        text-align: center;
+    }
+
+    .comment-box textarea {
+        max-width: 100%;
+    }
+
+    .comment-list {
+        max-width: 100%;
+    }
+
+    .category-content {
+        padding: 10px;
+    }
+
+    #category-videos {
+        max-width: 100%;
+    }
+
+    footer {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-left, .footer-right {
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-right {
+        margin-top: 10px;
+    }
+
+    .youtube-icon img, .footer-youtube-icon img {
+        border: none;
+    }
 }
