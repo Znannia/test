@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Сім чудес стародавнього світу",
+    "url": "facts/articles/seven-wonders.html",
+    "thumbnail": "facts/images/article-cover.jpg",
+    "description": "Дізнайтесь про легендарні пам’ятки, які вражали людство тисячоліттями: від пірамід Гізи до Александрійського маяка."
+  },
+  {
+    "title": "Традиції України: від минулого до сьогодення",
+    "url": "facts/ukraine-traditions.html",
+    "thumbnail": "facts/images/ukraine-traditions.jpg",
+    "description": "Поглибте знання про українські традиції, від вишиванок до святкових обрядів."
+  },
+  {
+    "title": "5 дивовижних фактів про космос",
+    "url": "facts/space-facts.html",
+    "thumbnail": "facts/images/space-facts.jpg",
+    "description": "Чорні діри, зірки та галактики — відкрийте таємниці космосу через захопливі факти."
+  }
+]
