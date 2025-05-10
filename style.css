@@ -438,7 +438,7 @@ footer {
     background-color: #145252;
     border-radius: 4px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    display: none; /* Перенесено із HTML */
+    display: none;
 }
 
 #categories-list li {
@@ -760,7 +760,7 @@ footer {
     }
 
     #latest-videos {
-        grid-template-columns: 1fr; /* Одне відео на всю ширину для мобільної версії */
+        grid-template-columns: 1fr;
     }
 
     footer {
