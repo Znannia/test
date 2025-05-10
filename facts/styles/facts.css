@@ -25,7 +25,7 @@
     text-align: center;
 }
 
-.facts-content h2 {
+.facts-content .intro-section .title-wrapper h2 {
     color: #ffffff !important; /* Білий колір для заголовка з високим пріоритетом */
     background: none !important; /* Видаляємо градієнт */
     -webkit-background-clip: initial !important; /* Скидаємо градієнт */
@@ -205,10 +205,17 @@
     background-color: #000000; /* Чорний фон для іконки X */
 }
 
+.share-icon.x img.share-icon-img {
+    width: 20px !important; /* Масштабуємо іконку X */
+    height: 20px !important;
+    object-fit: contain !important;
+    display: block;
+}
+
 .share-icon-img {
     width: 20px; /* Відповідність розміру шрифту Font Awesome */
     height: 20px;
-    object-fit: contain; /* Зберігає пропорції зображення */
+    object-fit: contain;
 }
 
 .share-icon.whatsapp {
