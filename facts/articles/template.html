@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="../../style.css">
     <link rel="stylesheet" href="../styles/facts.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Додаємо Font Awesome для іконок соцмереж -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SYFG3B62FV"></script>
     <script>
@@ -84,7 +85,7 @@
         <a href="../../never-lose.html" class="category-btn">Не програєш</a>
     </div>
     <div class="facts-content">
-        <h2>{{TITLE}}</h2>
+        <!-- Контейнер з кнопками та іконками угорі -->
         <div class="share-nav-container">
             <a href="../../index.html" class="nav-button">На головну сторінку</a>
             <div class="share-panel">
@@ -95,13 +96,17 @@
             </div>
             <a href="../../facts.html" class="nav-button">Більше цікавих фактів</a>
         </div>
+        <h2>{{TITLE}}</h2>
         <div class="article-text">
             <!-- Лід -->
             {{LEAD}}
-            <img src="./cover.jpg" alt="{{TITLE}}" class="article-image" loading="lazy">
+        </div>
+        <img src="./cover.jpg" alt="{{TITLE}}" class="article-image" loading="lazy">
+        <div class="article-text">
             <!-- Тіло тексту -->
             {{BODY}}
         </div>
+        <!-- Контейнер з кнопками та іконками внизу -->
         <div class="share-nav-container">
             <a href="../../index.html" class="nav-button">На головну сторінку</a>
             <div class="share-panel">
