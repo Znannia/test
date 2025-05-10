@@ -16,5 +16,11 @@
         "url": "facts/articles/rare-ukrainian-words/",
         "thumbnail": "facts/articles/rare-ukrainian-words/cover.jpg",
         "description": "Дізнайтесь про маловживані українські слова, які збагатять вашу мову: від 'легіт' до 'смерека'."
+    },
+    {
+        "title": "10 перлин Українських Карпат: від Говерли до червоної рути",
+        "url": "facts/articles/carpathian-pearls/",
+        "thumbnail": "facts/articles/carpathian-pearls/cover.jpg",
+        "description": "Відкрийте красу Карпат: Говерла, Синевир, червона рута та інші скарби! 10 цікавих фактів про Українські Карпати."
     }
 ]
