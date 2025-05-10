@@ -26,7 +26,7 @@
 }
 
 .facts-content h2 {
-    color: #FFD700;
+    color: #ffffff; /* Білий колір для заголовка */
     font-size: 32px;
     margin-bottom: 10px;
     text-align: center;
@@ -54,33 +54,6 @@
     color: #ffffff;
 }
 
-.article-section {
-    margin-bottom: 20px;
-    padding: 15px;
-    background-color: #1a3c34;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-.article-section h3 {
-    color: #ffcc00;
-    font-size: 26px;
-    margin-bottom: 10px;
-}
-
-.article-section p {
-    margin-bottom: 10px;
-}
-
-.article-section a {
-    color: #ffcc00;
-    text-decoration: none;
-}
-
-.article-section a:hover {
-    color: #e6b800;
-}
-
 .article-image {
     max-width: 100%;
     height: auto;
@@ -91,25 +64,6 @@
     display: block;
     border: 2px solid transparent;
     border-image: linear-gradient(to right, #FFD700, #FF0000) 1;
-}
-
-.article-video {
-    position: relative;
-    width: 100%;
-    max-width: 600px;
-    aspect-ratio: 16 / 9;
-    margin: 20px auto;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.article-video iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 5px;
 }
 
 /* Стилі для кнопок навігації та поширення */
@@ -143,13 +97,12 @@
 .share-container {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
     flex: 0 0 auto;
     padding: 10px;
-    border: 2px solid transparent;
-    border-image: linear-gradient(to right, #FFD700, #FF0000) 1;
     border-radius: 8px;
-    background-color: #1a3c34;
+    background-color: rgba(255, 215, 0, 0.15); /* Легкий жовтий відтінок */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
@@ -199,9 +152,9 @@
     background-color: #3b5998;
 }
 
-.share-icon.twitter {
-    background-color: #ffffff;
-    color: #000000;
+.share-icon.x { /* Змінено з .twitter на .x */
+    background-color: #000000; /* Чорний фон для іконки X */
+    color: #ffffff;
 }
 
 .share-icon.whatsapp {
@@ -229,16 +182,8 @@
         font-size: 16px;
     }
 
-    .article-section h3 {
-        font-size: 22px;
-    }
-
     .article-image {
         margin: 15px auto;
-    }
-
-    .article-video {
-        max-width: 100%;
     }
 
     .share-nav {
@@ -252,20 +197,20 @@
     }
 
     .share-container {
-        flex-direction: column;
+        flex-direction: row;
         width: 100%;
         padding: 8px;
+        justify-content: center;
     }
 
     .share-btn {
-        width: 100%;
+        width: auto;
         text-align: center;
     }
 
     .share-icons-left,
     .share-icons-right {
         flex-wrap: wrap;
-        width: 100%;
         justify-content: center;
         gap: 8px;
     }
