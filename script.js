@@ -1,4 +1,4 @@
-const API_KEYS = ["AIzaSyAZRW_d8xXbCSudzTPPQ7pUqcLmH26MeuE"],
+const API_KEYS = ['AIzaSyANIlHucfoyt3cMP5d06cV4uQX3Xx-XPLE', 'AIzaSyAZRW_d8xXbCSudzTPPQ7pUqcLmH26MeuE',],
       CHANNEL_ID = "UC0usNaN5iwML35qPxASBDWQ";
 let currentKeyIndex = 0;
 
