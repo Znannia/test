@@ -82,35 +82,16 @@
     border-radius: 5px;
 }
 
-/* Стилі для кнопки "Поділитися" */
-.share-container {
+/* Стилі для кнопок соцмереж і навігації */
+.share-nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin: 20px auto;
-    text-align: center;
-}
-
-.share-button {
-    display: inline-block;
-    padding: 12px 24px;
-    background-color: #ffcc00;
-    color: #0a2f2f;
-    font-size: 18px;
-    font-weight: 700;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.2s;
-}
-
-.share-button:hover {
-    background-color: #e6b800;
-    transform: scale(1.05);
+    max-width: 900px;
 }
 
 .share-panel {
-    display: none;
-    margin-top: 10px;
-}
-
-.share-panel.active {
     display: flex;
     justify-content: center;
     gap: 15px;
@@ -122,13 +103,12 @@
     height: 40px;
     line-height: 40px;
     text-align: center;
-    background-color: #1a3c34;
     border-radius: 50%;
-    transition: background-color 0.3s;
+    transition: transform 0.2s;
 }
 
 .share-panel a:hover {
-    background-color: #ffcc00;
+    transform: scale(1.1);
 }
 
 .share-panel i {
@@ -136,8 +116,39 @@
     color: #ffffff;
 }
 
-.share-panel a:hover i {
+/* Кольорове тло для соцмереж */
+.share-panel a[data-network="Facebook"] {
+    background-color: #1877F2;
+}
+
+.share-panel a[data-network="X"] {
+    background-color: #000000;
+}
+
+.share-panel a[data-network="WhatsApp"] {
+    background-color: #25D366;
+}
+
+.share-panel a[data-network="Viber"] {
+    background-color: #7360F2;
+}
+
+/* Стилі для навігаційних кнопок */
+.nav-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #ffcc00;
     color: #0a2f2f;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.nav-button:hover {
+    background-color: #e6b800;
+    transform: scale(1.05);
 }
 
 @media (max-width: 600px) {
@@ -161,9 +172,16 @@
         max-width: 100%;
     }
 
-    .share-button {
+    .share-nav-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .nav-button {
         font-size: 16px;
         padding: 10px 20px;
+        width: 100%;
+        text-align: center;
     }
 
     .share-panel a {
