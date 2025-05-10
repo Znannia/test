@@ -122,10 +122,6 @@ async function renderVideos(e, t, a = false) {
       <p class="video-title" data-video-id="${r}">${c}${a ? ' <span class="new">Нове</span>' : ""}</p>
       <div class="video-actions">
         <button class="comment-btn">Коментар</button>
-        <div class="like-container">
-          <span class="heart${localStorage.getItem(`liked_${r}`) ? " liked" : ""}" data-video-id="${r}">${localStorage.getItem(`liked_${r}`) ? "♥" : "♡"}</span>
-          <span class="like-count" data-video-id="${r}">${localStorage.getItem(`likes_${r}`) || 0}</span>
-        </div>
         <button class="more-btn" data-video-id="${r}">Більше</button>
       </div>
       <div class="comment-box" style="display:none">
@@ -156,7 +152,7 @@ async function renderVideos(e, t, a = false) {
       const e = a.parentElement.nextElementSibling;
       e.style.display = e.style.display === "none" ? "block" : "none";
     } else if (a.matches(".submit-comment")) {
-      const e = a.previousElementSibling, n = a.closest(".video-item").querySelector(".heart").getAttribute("data-video-id"), s = a.nextElementSibling;
+      const e = a.previousElementSibling, n = a.closest(".video-item").querySelector(".thumbnail").getAttribute("data-video-id"), s = a.nextElementSibling;
       if (e.value.trim()) {
         const t = document.createElement("p");
         t.textContent = e.value.trim();
@@ -166,22 +162,6 @@ async function renderVideos(e, t, a = false) {
         localStorage.setItem(`comments_${n}`, JSON.stringify(a));
         e.value = "";
       }
-    } else if (a.matches(".heart")) {
-      const e = a.getAttribute("data-video-id");
-      let t = parseInt(localStorage.getItem(`likes_${e}`) || 0);
-      if (localStorage.getItem(`liked_${e}`)) {
-        t -= 1;
-        a.classList.remove("liked");
-        a.innerHTML = "♡";
-        localStorage.removeItem(`liked_${e}`);
-      } else {
-        t += 1;
-        a.classList.add("liked");
-        a.innerHTML = "♥";
-        localStorage.setItem(`liked_${e}`, "true");
-      }
-      localStorage.setItem(`likes_${e}`, t);
-      a.nextElementSibling.textContent = t;
     } else if (a.matches(".more-btn")) {
       const e = a.getAttribute("data-video-id"), t = a.parentElement.nextElementSibling.nextElementSibling;
       t.style.display = t.style.display === "none" ? "block" : "none";
@@ -190,7 +170,7 @@ async function renderVideos(e, t, a = false) {
   });
 }
 
-// Додано обробку кнопки "Більше" для статей
+// Обробка кнопки "Більше" для статей
 document.addEventListener("click", e => {
   const target = e.target;
   if (target.matches(".fact-item .more-btn")) {
@@ -200,7 +180,7 @@ document.addEventListener("click", e => {
   }
 });
 
-const VIDEOS_PER_PAGE = 6;
+const VIDEOS_PER_PAGE = 3; // Обмежено до 3 для .latest-videos
 
 async function fetchLatestVideos() {
   const e = document.getElementById("latest-videos");
@@ -216,7 +196,7 @@ async function fetchLatestVideos() {
     if (videos.length > VIDEOS_PER_PAGE) {
       const loadMoreBtn = document.createElement("button");
       loadMoreBtn.textContent = "Завантажити ще";
-      loadMoreBtn.className = "more-btn";
+      loadMoreBtn.className = "more-btn load-more";
       loadMoreBtn.onclick = () => {
         currentPage++;
         const startIndex = (currentPage - 1) * VIDEOS_PER_PAGE;
@@ -248,7 +228,7 @@ async function fetchLatestVideos() {
     if (i.length > VIDEOS_PER_PAGE) {
       const loadMoreBtn = document.createElement("button");
       loadMoreBtn.textContent = "Завантажити ще";
-      loadMoreBtn.className = "more-btn";
+      loadMoreBtn.className = "more-btn load-more";
       loadMoreBtn.onclick = () => {
         currentPage++;
         const startIndex = (currentPage - 1) * VIDEOS_PER_PAGE;
@@ -282,7 +262,7 @@ async function fetchRandomVideos() {
     if (videos.length > VIDEOS_PER_PAGE) {
       const loadMoreBtn = document.createElement("button");
       loadMoreBtn.textContent = "Завантажити ще";
-      loadMoreBtn.className = "more-btn";
+      loadMoreBtn.className = "more-btn load-more";
       loadMoreBtn.onclick = () => {
         currentPage++;
         const startIndex = (currentPage - 1) * VIDEOS_PER_PAGE;
@@ -321,14 +301,14 @@ async function fetchRandomVideos() {
     if (l.length > VIDEOS_PER_PAGE) {
       const loadMoreBtn = document.createElement("button");
       loadMoreBtn.textContent = "Завантажити ще";
-      loadMoreBtn.className = "more-btn";
+      loadMoreBtn.className = "more-btn load-more";
       loadMoreBtn.onclick = () => {
         currentPage++;
         const startIndex = (currentPage - 1) * VIDEOS_PER_PAGE;
         const endIndex = startIndex + VIDEOS_PER_PAGE;
         const nextVideos = l.slice(startIndex, endIndex);
         renderVideos(nextVideos, e);
-        if (endIndex >= l.length) loadMoreBtn.remove();
+        if (endIndex >= i.length) loadMoreBtn.remove();
       };
       e.after(loadMoreBtn);
     }
@@ -380,7 +360,7 @@ async function fetchCategoryVideos() {
     if (videos.length > VIDEOS_PER_PAGE) {
       const loadMoreBtn = document.createElement("button");
       loadMoreBtn.textContent = "Завантажити ще";
-      loadMoreBtn.className = "more-btn";
+      loadMoreBtn.className = "more-btn load-more";
       loadMoreBtn.onclick = () => {
         currentPage++;
         const startIndex = (currentPage - 1) * VIDEOS_PER_PAGE;
@@ -417,7 +397,7 @@ async function fetchCategoryVideos() {
     if (i.length > VIDEOS_PER_PAGE) {
       const loadMoreBtn = document.createElement("button");
       loadMoreBtn.textContent = "Завантажити ще";
-      loadMoreBtn.className = "more-btn";
+      loadMoreBtn.className = "more-btn load-more";
       loadMoreBtn.onclick = () => {
         currentPage++;
         const startIndex = (currentPage - 1) * VIDEOS_PER_PAGE;
