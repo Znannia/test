@@ -170,16 +170,6 @@ async function renderVideos(e, t, a = false) {
   });
 }
 
-// Обробка кнопки "Більше" для статей
-document.addEventListener("click", e => {
-  const target = e.target;
-  if (target.matches(".fact-item .more-btn")) {
-    const lead = target.previousElementSibling;
-    lead.style.display = lead.style.display === "none" ? "block" : "none";
-    target.textContent = lead.style.display === "none" ? "Більше" : "Менше";
-  }
-});
-
 const VIDEOS_PER_PAGE = 3; // Обмежено до 3 для .latest-videos
 
 async function fetchLatestVideos() {
@@ -315,7 +305,7 @@ async function fetchCategoryVideos() {
   if (!e) return;
   let t = e.dataset.category || "", a = playlistIds[t] || "";
   if (!t || !(t = new URLSearchParams(window.location.search).get("category") || "", a = playlistIds[t] || "", Object.keys(playlistIds).includes(t)) && window.location.pathname.includes("category.html")) {
-    window.location.replace("https://www.znannia.online/");
+    window.location.replace("https://znannia.github.io/test/");
     return;
   }
   const n = document.getElementById("category-title");
@@ -416,6 +406,47 @@ document.getElementById("categories-btn")?.addEventListener("click", () => {
   const e = document.getElementById("categories-list"), t = e.style.display === "none";
   e.style.display = t ? "block" : "none";
   e.previousElementSibling.setAttribute("aria-expanded", t);
+});
+
+// Нова логіка для завантаження статей
+document.addEventListener('DOMContentLoaded', () => {
+  const factsList = document.getElementById('facts-list');
+  if (!factsList) return;
+
+  fetch('facts/articles/articles.json')
+    .then(response => response.json())
+    .then(articles => {
+      factsList.innerHTML = ''; // Очищаємо статичний контент
+
+      articles.forEach(article => {
+        const factItem = document.createElement('div');
+        factItem.className = 'fact-item';
+        factItem.innerHTML = `
+          <a href="${article.url}" class="fact-link">
+            <img src="${article.thumbnail}" alt="${article.title}" class="thumbnail" loading="lazy">
+            <h4>${article.title}</h4>
+          </a>
+          <div class="fact-lead" style="display:none">
+            <p>${article.description}</p>
+          </div>
+          <button class="more-btn">Більше</button>
+        `;
+        factsList.appendChild(factItem);
+      });
+
+      // Обробка кнопок "Більше/Менше" для статей
+      document.querySelectorAll('.fact-item .more-btn').forEach(button => {
+        button.addEventListener('click', () => {
+          const factLead = button.previousElementSibling;
+          factLead.style.display = factLead.style.display === 'none' ? 'block' : 'none';
+          button.textContent = factLead.style.display === 'none' ? 'Більше' : 'Менше';
+        });
+      });
+    })
+    .catch(error => {
+      console.error('Помилка завантаження статей:', error);
+      factsList.innerHTML = '<p>Не вдалося завантажити статті. Спробуйте пізніше.</p>';
+    });
 });
 
 fetchSubscribers();
