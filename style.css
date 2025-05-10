@@ -175,25 +175,25 @@ h1 a {
     background-color: #e6b800;
 }
 
-.latest-videos, .random-videos, .category-videos, .facts-section {
+.latest-videos, .random-videos, .category-videos, .facts-section, .facts {
     padding: 20px;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-.latest-videos h3, .random-videos h3, .category-videos h3, .facts-section h3 {
+.latest-videos h3, .random-videos h3, .category-videos h3, .facts-section h3, .facts h2 {
     text-align: left;
     color: #ffff00;
     font-size: 28px;
     margin: 0 0 20px;
 }
 
-.facts-section h3 a {
+.facts-section h3 a, .facts h2 a {
     color: #ffff00;
     text-decoration: none;
 }
 
-.facts-section h3 a:hover {
+.facts-section h3 a:hover, .facts h2 a:hover {
     color: #ffcc00;
 }
 
@@ -204,7 +204,7 @@ h1 a {
     text-align: left;
 }
 
-.category-content {
+.category-content, .facts-content {
     padding: 20px;
     max-width: 1200px;
     margin: 0 auto;
@@ -216,6 +216,22 @@ h1 a {
     gap: 20px;
     max-width: 1200px;
     margin: 0 auto;
+}
+
+#latest-videos {
+    grid-template-columns: repeat(3, 1fr); /* Завжди 3 відео в одному рядку */
+}
+
+@media (max-width: 900px) {
+    #latest-videos {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    #latest-videos {
+        grid-template-columns: 1fr; /* На малих екранах 1 відео в рядку */
+    }
 }
 
 .video-item, .fact-item {
@@ -290,29 +306,6 @@ h1 a {
     background-color: #218838;
 }
 
-.like-container {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.heart {
-    font-size: 24px;
-    color: white;
-    cursor: pointer;
-    text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
-}
-
-.heart.liked {
-    color: red;
-}
-
-.like-count {
-    font-size: 16px;
-    color: #ffffff;
-    display: inline;
-}
-
 .more-btn {
     background-color: #ffcc00;
     color: #000000;
@@ -327,6 +320,21 @@ h1 a {
 
 .more-btn:hover {
     background-color: #e6b800;
+}
+
+.more-btn.load-more {
+    display: block;
+    margin: 20px auto;
+    background-color: #ff0000;
+    color: #ffffff;
+    padding: 12px 24px;
+    font-size: 18px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    transition: background-color 0.3s;
+}
+
+.more-btn.load-more:hover {
+    background-color: #cc0000;
 }
 
 .comment-box {
@@ -390,6 +398,41 @@ h1 a {
     margin: 0;
     font-size: 14px;
     line-height: 1.5;
+}
+
+.fact-content {
+    margin-top: 20px;
+    background-color: #145252;
+    padding: 15px;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.fact-content p {
+    margin: 10px 0;
+    line-height: 1.6;
+}
+
+.fact-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin: 10px 0;
+}
+
+.fact-content iframe {
+    max-width: 100%;
+    height: 169px;
+    border-radius: 4px;
+    margin: 10px 0;
+}
+
+.youtube-icon-small {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    margin: 0 5px;
 }
 
 .new {
@@ -518,13 +561,13 @@ footer {
     margin: 20px 0;
 }
 
-.about, .contact, .collaboration, .privacy {
+.about, .contact, .collaboration, .privacy, .facts-text {
     padding: 20px;
     max-width: 800px;
     margin: 0 auto;
 }
 
-.about h2, .contact h2, .collaboration h2, .privacy h2, .facts h2 {
+.about h2, .contact h2, .collaboration h2, .privacy h2, .facts-text h2 {
     color: #ffff00;
     text-align: center;
     font-size: 28px;
@@ -568,16 +611,30 @@ footer {
 .intro-text {
     max-width: 800px;
     margin: 20px auto;
-    padding: 0 15px;
+    padding: 15px;
     color: #ffffff;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 1.6;
+    border: 2px solid #ffcc00;
+    background-color: #145252;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .intro-text h2 {
     color: #ffff00;
     font-size: 24px;
     margin-bottom: 10px;
+}
+
+.extended-text {
+    display: none;
+}
+
+@media (min-width: 600px) {
+    .extended-text {
+        display: block;
+    }
 }
 
 .subscribe-btn:focus, .category-btn:focus, .more-btn:focus {
@@ -593,14 +650,6 @@ footer {
 
     .comment-btn, .more-btn {
         padding: 8px 12px;
-        font-size: 14px;
-    }
-
-    .heart {
-        font-size: 20px;
-    }
-
-    .like-count {
         font-size: 14px;
     }
 
@@ -723,82 +772,4 @@ footer {
     .category-btn:nth-child(6) { order: 6; }
     .category-btn:nth-child(7) { order: 7; }
     .category-btn:nth-child(8) { order: 8; }
-
-    .video-actions {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        gap: 10px;
-        min-height: 50px;
-        padding: 0 5px;
-    }
-
-    .comment-btn {
-        padding: 10px;
-        font-size: 18px;
-        font-weight: bold;
-        flex: 1;
-        text-align: center;
-    }
-
-    .like-container {
-        flex: 0 0 auto;
-        display: flex;
-        align-items: center;
-        gap: 5px;
-    }
-
-    .heart {
-        font-size: 32px;
-    }
-
-    .like-count {
-        font-size: 14px;
-    }
-
-    .more-btn {
-        padding: 10px;
-        font-size: 18px;
-        font-weight: bold;
-        flex: 1;
-        text-align: center;
-    }
-
-    .comment-box textarea {
-        max-width: 100%;
-    }
-
-    .comment-list {
-        max-width: 100%;
-    }
-
-    .category-content {
-        padding: 10px;
-    }
-
-    .facts-section, .latest-videos, .random-videos {
-        padding: 10px;
-    }
-
-    #category-videos, #facts-list {
-        max-width: 100%;
-    }
-
-    footer {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .footer-left, .footer-right {
-        align-items: center;
-        text-align: center;
-    }
-
-    .footer-right {
-        margin-top: 10px;
-    }
-
-    .youtube-icon img, .footer-youtube-icon img {
-        border: none;
-    }
 }
