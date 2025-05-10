@@ -175,17 +175,26 @@ h1 a {
     background-color: #e6b800;
 }
 
-.latest-videos, .random-videos, .category-videos {
+.latest-videos, .random-videos, .category-videos, .facts-section {
     padding: 20px;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-.latest-videos h3, .random-videos h3, .category-videos h3 {
+.latest-videos h3, .random-videos h3, .category-videos h3, .facts-section h3 {
     text-align: left;
     color: #ffff00;
     font-size: 28px;
     margin: 0 0 20px;
+}
+
+.facts-section h3 a {
+    color: #ffff00;
+    text-decoration: none;
+}
+
+.facts-section h3 a:hover {
+    color: #ffcc00;
 }
 
 #category-title {
@@ -201,7 +210,7 @@ h1 a {
     margin: 0 auto;
 }
 
-#latest-videos, #random-videos, #category-videos {
+#latest-videos, #random-videos, #category-videos, #facts-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
@@ -209,13 +218,13 @@ h1 a {
     margin: 0 auto;
 }
 
-.video-item {
+.video-item, .fact-item {
     text-align: center;
     border: 2px solid #1a3c34;
     padding: 10px;
 }
 
-.video-container {
+.video-container, .fact-link {
     position: relative;
     width: 100%;
     max-width: 300px;
@@ -241,7 +250,7 @@ h1 a {
     border-radius: 5px;
 }
 
-.video-title {
+.video-title, .fact-item h4 {
     color: #ffffff;
     margin: 5px 0;
     cursor: pointer;
@@ -249,8 +258,13 @@ h1 a {
     text-decoration: none;
 }
 
-.video-title:hover {
+.video-title:hover, .fact-item h4:hover {
     color: #ffcc00;
+}
+
+.fact-link {
+    display: block;
+    text-decoration: none;
 }
 
 .video-actions {
@@ -363,7 +377,7 @@ h1 a {
     line-height: 1.5;
 }
 
-.description-box {
+.description-box, .fact-lead {
     margin-top: 10px;
     background-color: #145252;
     padding: 10px;
@@ -372,7 +386,7 @@ h1 a {
     display: none;
 }
 
-.description-box p {
+.description-box p, .fact-lead p {
     margin: 0;
     font-size: 14px;
     line-height: 1.5;
@@ -510,30 +524,30 @@ footer {
     margin: 0 auto;
 }
 
-.about h2, .contact h2, .collaboration h2, .privacy h2 {
+.about h2, .contact h2, .collaboration h2, .privacy h2, .facts h2 {
     color: #ffff00;
     text-align: center;
     font-size: 28px;
 }
 
-.about-text, .contact-text, .collaboration-text, .privacy-text {
+.about-text, .contact-text, .collaboration-text, .privacy-text, .facts-text {
     background-color: #145252;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-.about-text p, .contact-text p, .collaboration-text p, .privacy-text p {
+.about-text p, .contact-text p, .collaboration-text p, .privacy-text p, .facts-text p {
     margin: 10px 0;
     line-height: 1.6;
 }
 
-.about-text a, .contact-text a, .collaboration-text a, .privacy-text a {
+.about-text a, .contact-text a, .collaboration-text a, .privacy-text a, .facts-text a {
     color: #ffcc00;
     text-decoration: none;
 }
 
-.about-text a:hover, .contact-text a:hover, .collaboration-text a:hover, .privacy-text a:hover {
+.about-text a:hover, .contact-text a:hover, .collaboration-text a:hover, .privacy-text a:hover, .facts-text a:hover {
     color: #e6b800;
 }
 
@@ -549,6 +563,26 @@ footer {
 .category-description p {
     margin: 10px 0;
     line-height: 1.6;
+}
+
+.intro-text {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 0 15px;
+    color: #ffffff;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.intro-text h2 {
+    color: #ffff00;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.subscribe-btn:focus, .category-btn:focus, .more-btn:focus {
+    outline: 2px solid #ffff00;
+    outline-offset: 2px;
 }
 
 @media (max-width: 900px) {
@@ -635,6 +669,13 @@ footer {
         height: 30px;
         display: inline-block;
         flex: 0 0 auto;
+    }
+
+    .subscribers {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 150px;
     }
 
     .subscribe-btn {
@@ -735,7 +776,11 @@ footer {
         padding: 10px;
     }
 
-    #category-videos {
+    .facts-section, .latest-videos, .random-videos {
+        padding: 10px;
+    }
+
+    #category-videos, #facts-list {
         max-width: 100%;
     }
 
