@@ -1,5 +1,5 @@
-const API_KEYS = ['AIzaSyANIlHucfoyt3cMP5d06cV4uQX3Xx-XPLE', 'AIzaSyAZRW_d8xXbCSudzTPPQ7pUqcLmH26MeuE',],
-      CHANNEL_ID = "UC0usNaN5iwML35qPxASBDWQ";
+const API_KEYS = ['AIzaSyANIlHucfoyt3cMP5d06cV4uQX3Xx-XPLE', 'AIzaSyAZRW_d8xXbCSudzTPPQ7pUqcLmH26MeuE'];
+const CHANNEL_ID = "UC0usNaN5iwML35qPxASBDWQ";
 let currentKeyIndex = 0;
 
 const playlistIds = {
@@ -170,7 +170,7 @@ async function renderVideos(e, t, a = false) {
   });
 }
 
-const VIDEOS_PER_PAGE = 3; // Обмежено до 3 для .latest-videos
+const VIDEOS_PER_PAGE = 3;
 
 async function fetchLatestVideos() {
   const e = document.getElementById("latest-videos");
@@ -210,7 +210,7 @@ async function fetchRandomVideos() {
   let currentPage = 1;
   if (s && i && r - i < n) {
     let videos = JSON.parse(s).filter(e => e.snippet && e.snippet.resourceId && e.snippet.resourceId.videoId && e.snippet.title !== "Private video" && e.snippet.title !== "Deleted video");
-    const paginatedVideos = videos.slice(0, VIDEOS_PER_PAGE * 3); // Завантажуємо 3 ряди
+    const paginatedVideos = videos.slice(0, VIDEOS_PER_PAGE * 3);
     await renderVideos(paginatedVideos, e);
     if (videos.length > VIDEOS_PER_PAGE * 3) {
       const loadMoreBtn = document.createElement("button");
@@ -245,9 +245,9 @@ async function fetchRandomVideos() {
   }
   try {
     const n = window.innerWidth;
-    let s = 15; // 3 ряди по 5 відео для широких екранів
-    if (n >= 600 && n < 900) s = 12; // 3 ряди по 4 відео
-    else if (n < 600) s = 9; // 3 ряди по 3 відео
+    let s = 15;
+    if (n >= 600 && n < 900) s = 12;
+    else if (n < 600) s = 9;
     const i = [], r = Object.keys(playlistIds);
     for (const t of r) {
       const a = playlistIds[t], n = await fetchWithKey(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,status&playlistId=${a}&maxResults=50`);
@@ -257,7 +257,7 @@ async function fetchRandomVideos() {
     }
     const c = i.map(e => e.snippet.resourceId.videoId), o = await filterNonShorts(c), l = i.filter(e => o.includes(e.snippet.resourceId.videoId));
     l.sort(() => Math.random() - 0.5);
-    const paginatedVideos = l.slice(0, s); // Завантажуємо 9, 12 або 15 відео
+    const paginatedVideos = l.slice(0, s);
     if (paginatedVideos.length === 0) {
       e.innerHTML = "<p>Немає доступних відео. Спробуйте пізніше.</p>";
       e.classList.remove("loading");
@@ -410,43 +410,60 @@ document.getElementById("categories-btn")?.addEventListener("click", () => {
 
 // Нова логіка для завантаження статей
 document.addEventListener('DOMContentLoaded', () => {
-  const factsList = document.getElementById('facts-list');
-  if (!factsList) return;
+    const factsList = document.getElementById('facts-list');
+    const loadMoreBtn = document.getElementById('load-more-facts');
+    if (!factsList || !loadMoreBtn) return;
 
-  fetch('facts/articles/articles.json')
-    .then(response => response.json())
-    .then(articles => {
-      factsList.innerHTML = ''; // Очищаємо статичний контент
+    let displayedArticles = 6; // Показуємо 6 статей спочатку
+    const articlesPerLoad = 6; // Завантажуємо ще 6 за раз
 
-      articles.forEach(article => {
-        const factItem = document.createElement('div');
-        factItem.className = 'fact-item';
-        factItem.innerHTML = `
-          <a href="${article.url}" class="fact-link">
-            <img src="${article.thumbnail}" alt="${article.title}" class="thumbnail" loading="lazy">
-            <h4>${article.title}</h4>
-          </a>
-          <div class="fact-lead" style="display:none">
-            <p>${article.description}</p>
-          </div>
-          <button class="more-btn">Більше</button>
-        `;
-        factsList.appendChild(factItem);
-      });
-
-      // Обробка кнопок "Більше/Менше" для статей
-      document.querySelectorAll('.fact-item .more-btn').forEach(button => {
-        button.addEventListener('click', () => {
-          const factLead = button.previousElementSibling;
-          factLead.style.display = factLead.style.display === 'none' ? 'block' : 'none';
-          button.textContent = factLead.style.display === 'none' ? 'Більше' : 'Менше';
+    function renderArticles(articles, startIndex, endIndex) {
+        const slice = articles.slice(startIndex, endIndex);
+        slice.forEach(article => {
+            const factItem = document.createElement('div');
+            factItem.className = 'fact-item';
+            factItem.innerHTML = `
+                <a href="${article.url}" class="fact-link">
+                    <img src="${article.thumbnail}" alt="${article.title}" class="thumbnail" loading="lazy">
+                    <h4>${article.title}</h4>
+                </a>
+                <div class="fact-lead">
+                    <p>${article.description}</p>
+                </div>
+            `;
+            factsList.appendChild(factItem);
         });
-      });
-    })
-    .catch(error => {
-      console.error('Помилка завантаження статей:', error);
-      factsList.innerHTML = '<p>Не вдалося завантажити статті. Спробуйте пізніше.</p>';
-    });
+    }
+
+    fetch('facts/articles/articles.json')
+        .then(response => response.json())
+        .then(articles => {
+            factsList.innerHTML = ''; // Очищаємо статичний контент
+
+            // Показуємо перші 6 статей
+            renderArticles(articles, 0, displayedArticles);
+
+            // Ховаємо кнопку, якщо статей ≤ 6
+            if (articles.length <= displayedArticles) {
+                loadMoreBtn.classList.add('hidden');
+            }
+
+            // Обробка кнопки Завантажити ще
+            loadMoreBtn.addEventListener('click', () => {
+                const startIndex = displayedArticles;
+                displayedArticles += articlesPerLoad;
+                renderArticles(articles, startIndex, displayedArticles);
+
+                // Ховаємо кнопку, якщо більше немає статей
+                if (displayedArticles >= articles.length) {
+                    loadMoreBtn.classList.add('hidden');
+                }
+            });
+        })
+        .catch(error => {
+            console.error('Помилка завантаження статей:', error);
+            factsList.innerHTML = '<p>Не вдалося завантажити статті. Спробуйте пізніше.</p>';
+        });
 });
 
 fetchSubscribers();
