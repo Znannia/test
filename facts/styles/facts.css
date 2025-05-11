@@ -1,4 +1,3 @@
-/* Стилі для блогу */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
 .facts-content {
@@ -26,7 +25,20 @@
 }
 
 .facts-content h2 {
-    color: #ffffff;
+    color: #FFF5E1; /* Молочний колір */
+    font-size: 32px;
+    margin-bottom: 10px;
+    text-align: center;
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+}
+
+.facts-content .intro-section .title-wrapper h1 {
+    color: #FFF5E1 !important; /* Молочний колір для h1 */
+    background: none !important;
+    -webkit-background-clip: initial !important;
+    -webkit-text-fill-color: #FFF5E1 !important;
     font-size: 32px;
     margin-bottom: 10px;
     text-align: center;
@@ -52,7 +64,10 @@
     font-size: 18px;
     line-height: 1.7;
     color: #ffffff;
-    text-align: center; /* Гарантує центрування вмісту, включаючи зображення */
+    text-align: left; /* Вирівнювання за лівим краєм */
+    padding: 0 10px;
+    white-space: normal; /* Нормалізує пробіли */
+    overflow-wrap: break-word; /* Переносить довгі слова */
 }
 
 .article-section {
@@ -70,7 +85,7 @@
 }
 
 .article-section p {
-    margin-bottom: 10px;
+    margin-bottom: 8px; /* Зменшено для компактності */
 }
 
 .article-section a {
@@ -82,19 +97,47 @@
     color: #e6b800;
 }
 
+.article-section ul {
+    padding-left: 20px; /* Відступ для списків */
+    margin: 10px 0;
+}
+
+.article-section ul li {
+    margin-bottom: 5px; /* Відступ між пунктами списку */
+}
+
 .read-more {
     display: inline-block;
     padding: 8px 12px;
-    background-color: rgba(255, 215, 0, 0.15); /* Напівпрозорий фон, як у share-container */
+    background-color: rgba(255, 215, 0, 0.15);
     border-radius: 5px;
-    color: #ffcc00; /* Колір, як у article-section a */
+    color: #ffcc00;
     text-decoration: none;
     font-weight: 500;
     transition: background-color 0.3s ease, color 0.3s ease;
 }
+
 .read-more:hover {
     background-color: rgba(255, 215, 0, 0.3);
-    color: #e6b800; /* Колір при наведенні, як у article-section a:hover */
+    color: #e6b800;
+}
+
+.related-link {
+    margin: 15px 0;
+    padding: 10px;
+    background-color: #2a4c44;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.related-link h3 {
+    color: #ffcc00;
+    font-size: 22px;
+    margin-bottom: 8px;
+}
+
+.related-link p {
+    margin: 0;
 }
 
 .article-image {
@@ -103,12 +146,12 @@
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     object-fit: cover;
-    margin: 10px auto; /* Зменшено з 20px до 10px для щільнішого розташування */
+    margin: 10px auto;
     display: block;
     border: 2px solid transparent;
     border-image: linear-gradient(to right, #FFD700, #FF0000) 1;
-    float: none !important; /* Запобігаємо зміщенню через float */
-    text-align: center !important; /* Явне центрування */
+    float: none !important;
+    text-align: center !important;
 }
 
 .article-video {
@@ -130,7 +173,6 @@
     border-radius: 5px;
 }
 
-/* Стилі для кнопок навігації та поширення */
 .share-nav {
     display: flex;
     justify-content: space-between;
@@ -228,6 +270,20 @@
     background-color: #665cac;
 }
 
+.fact-box {
+    border: 2px solid #ffcc00;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px 0;
+    background-color: #2a4c44;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    color: #ffffff;
+}
+
+.fact-box p {
+    margin-bottom: 0;
+}
+
 @media (max-width: 600px) {
     .facts-content {
         padding: 15px;
@@ -241,6 +297,10 @@
         font-size: 26px;
     }
 
+    .facts-content .intro-section .title-wrapper h1 {
+        font-size: 26px;
+    }
+
     .article-text {
         font-size: 16px;
     }
@@ -249,8 +309,12 @@
         font-size: 22px;
     }
 
+    .related-link h3 {
+        font-size: 20px;
+    }
+
     .article-image {
-        margin: 8px auto; /* Зменшено для мобільних пристроїв */
+        margin: 8px auto;
     }
 
     .article-video {
@@ -291,26 +355,6 @@
     }
 
     .category-buttons {
-        display: none; /* Приховує кнопки категорій у мобільній версії */
+        display: none;
     }
-}
-
-/* Високоспецифічне правило для заголовка в intro-section */
-.facts-content .intro-section .title-wrapper h2 {
-    color: #FFF5E1 !important; /* Молочний колір */
-    background: none !important; /* Скасовуємо градієнт */
-    -webkit-background-clip: initial !important; /* Скасовуємо кліпінг */
-    -webkit-text-fill-color: #FFF5E1 !important; /* Явно задаємо колір тексту */
-}
-.fact-box {
-    border: 2px solid #ffcc00;
-    border-radius: 10px;
-    padding: 15px;
-    margin: 10px 0;
-    background-color: #2a4c44;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    color: #ffffff;
-}
-.fact-box p {
-    margin-bottom: 0;
 }
