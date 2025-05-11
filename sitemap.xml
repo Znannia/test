@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- УВАГА: Переконайтеся, що домен правильний (znannia.online або znannia.github.io). Оновіть усі URL, якщо використовується інший домен -->
+  <!-- Головна сторінка -->
   <url>
     <loc>https://www.znannia.online/</loc>
     <lastmod>2025-04-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
+  <!-- Категорії -->
   <url>
     <loc>https://www.znannia.online/geography.html</loc>
     <lastmod>2025-04-23</lastmod>
@@ -74,7 +75,7 @@
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
-  <!-- Приклади статей для досягнення 30–40 (додайте реальні URL) -->
+  <!-- Приклади статей: замініть на реальні URL -->
   <url>
     <loc>https://www.znannia.online/facts/articles/seven-wonders/</loc>
     <lastmod>2025-05-11</lastmod>
@@ -82,7 +83,7 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.znannia.online/facts/articles/ukrainian-history/</loc>
+    <loc>https://www.znannia.online/facts/articles/ukrainian-culture/</loc>
     <lastmod>2025-05-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -93,7 +94,20 @@
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
-  <!-- Додайте інші статті, наприклад, по 3–4 на категорію -->
+  <url>
+    <loc>https://www.znannia.online/facts/articles/ten-facts-about-space/</loc>
+    <lastmod>2025-05-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.znannia.online/facts/articles/ancient-empires/</loc>
+    <lastmod>2025-05-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <!-- Додайте решту статей (ціль: 30–40) -->
+  <!-- Інформаційні сторінки -->
   <url>
     <loc>https://www.znannia.online/about.html</loc>
     <lastmod>2025-04-23</lastmod>
