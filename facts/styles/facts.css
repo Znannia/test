@@ -24,7 +24,7 @@
     text-align: center;
 }
 
-.facts-content h2 {
+.facts-content h1 {
     color: #FFF5E1; /* Молочний колір */
     font-size: 32px;
     margin-bottom: 10px;
@@ -34,17 +34,11 @@
     display: inline-block;
 }
 
-.facts-content .intro-section .title-wrapper h1 {
-    color: #FFF5E1 !important; /* Молочний колір для h1 */
-    background: none !important;
-    -webkit-background-clip: initial !important;
-    -webkit-text-fill-color: #FFF5E1 !important;
-    font-size: 32px;
+.facts-content h2 {
+    color: #FFF5E1; /* Молочний колір */
+    font-size: 28px;
     margin-bottom: 10px;
     text-align: center;
-    text-transform: uppercase;
-    position: relative;
-    display: inline-block;
 }
 
 .title-wrapper::after {
@@ -66,8 +60,8 @@
     color: #ffffff;
     text-align: left; /* Вирівнювання за лівим краєм */
     padding: 0 10px;
-    white-space: normal; /* Нормалізує пробіли */
-    overflow-wrap: break-word; /* Переносить довгі слова */
+    white-space: normal; /* Нормалізація пробілів */
+    overflow-wrap: break-word; /* Перенос довгих слів */
 }
 
 .article-section {
@@ -85,7 +79,7 @@
 }
 
 .article-section p {
-    margin-bottom: 8px; /* Зменшено для компактності */
+    margin-bottom: 8px; /* Компактні відступи */
 }
 
 .article-section a {
@@ -98,12 +92,12 @@
 }
 
 .article-section ul {
-    padding-left: 20px; /* Відступ для списків */
+    padding-left: 20px;
     margin: 10px 0;
 }
 
 .article-section ul li {
-    margin-bottom: 5px; /* Відступ між пунктами списку */
+    margin-bottom: 5px;
 }
 
 .read-more {
@@ -150,8 +144,6 @@
     display: block;
     border: 2px solid transparent;
     border-image: linear-gradient(to right, #FFD700, #FF0000) 1;
-    float: none !important;
-    text-align: center !important;
 }
 
 .article-video {
@@ -293,12 +285,12 @@
         padding: 15px;
     }
 
-    .facts-content h2 {
+    .facts-content h1 {
         font-size: 26px;
     }
 
-    .facts-content .intro-section .title-wrapper h1 {
-        font-size: 26px;
+    .facts-content h2 {
+        font-size: 24px;
     }
 
     .article-text {
