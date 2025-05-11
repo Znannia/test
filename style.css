@@ -157,7 +157,7 @@ h1 a {
     justify-content: center;
     flex-wrap: wrap;
     gap: 10px;
-    margin: 20px 0;
+    margin: 10px 0; /* Зменшено з 20px */
 }
 
 .category-btn {
@@ -189,7 +189,7 @@ h1 a {
 }
 
 .facts-section {
-    background: linear-gradient(to bottom, #2e7d32, #145252); /* Gradient background */
+    background: linear-gradient(to bottom, #2e7d32, #145252);
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
@@ -226,7 +226,7 @@ h1 a {
 
 #facts-list {
     display: grid;
-    grid-template-columns: repeat(3, minmax(300px, 1fr)); /* 3 items per row on desktop */
+    grid-template-columns: repeat(3, minmax(300px, 1fr));
     gap: 20px;
     max-width: 1200px;
     margin: 0 auto;
@@ -239,10 +239,10 @@ h1 a {
 }
 
 .fact-item {
-    border: 2px solid #ffcc00; /* Yellow border */
-    border-radius: 8px; /* Rounded corners */
-    overflow: hidden; /* Ensure content fits */
-    background-color: #1b1b1b; /* Darker background */
+    border: 2px solid #ffcc00;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: #1b1b1b;
 }
 
 .video-container, .fact-link {
@@ -396,36 +396,36 @@ h1 a {
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
     position: relative;
-    min-height: 70px; /* Space for button */
+    min-height: 70px;
 }
 
 .fact-lead {
-    font-size: 12px; /* Smaller font */
+    font-size: 12px;
     line-height: 1.5;
     color: #ffffff;
-    text-align: left; /* Align left */
-    max-height: 4.5em; /* Limit to three lines */
+    text-align: left;
+    max-height: 4.5em;
     overflow: hidden;
     display: -webkit-box;
-    -webkit-line-clamp: 3; /* Limit to 3 lines */
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
 }
 
 .fact-lead p {
     margin: 0;
-    padding-right: 80px; /* Space for button and ellipsis */
+    padding-right: 80px;
 }
 
 .fact-lead::after {
-    content: '...'; /* Ellipsis before button */
+    content: '...';
     position: absolute;
-    bottom: 28px; /* Align with text */
-    right: 75px; /* Before button */
-    display: none; /* Show only when truncated */
+    bottom: 28px;
+    right: 75px;
+    display: none;
 }
 
 .fact-lead.truncated::after {
-    display: inline; /* Show ellipsis when truncated */
+    display: inline;
 }
 
 .new {
@@ -556,7 +556,7 @@ footer {
 }
 
 .about, .contact, .collaboration, .privacy {
-    padding: 20px;
+    padding: 10px; /* Зменшено з 20px */
     max-width: 800px;
     margin: 0 auto;
 }
@@ -565,17 +565,18 @@ footer {
     color: #ffff00;
     text-align: center;
     font-size: 28px;
+    margin: 5px 0 10px; /* Додано для зменшення відступів */
 }
 
 .about-text, .contact-text, .collaboration-text, .privacy-text {
     background-color: #145252;
-    padding: 20px;
+    padding: 15px; /* Зменшено з 20px */
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .about-text p, .contact-text p, .collaboration-text p, .privacy-text p {
-    margin: 10px 0;
+    margin: 5px 0; /* Зменшено з 10px */
     line-height: 1.6;
 }
 
@@ -586,6 +587,11 @@ footer {
 
 .about-text a:hover, .contact-text a:hover, .collaboration-text a:hover, .privacy-text a:hover {
     color: #e6b800;
+}
+
+/* Стиль для рекламного блоку */
+ins.adsbygoogle {
+    margin: 0.5rem auto !important; /* Зменшено з 1rem */
 }
 
 .category-description {
@@ -665,7 +671,7 @@ footer {
     }
 
     #facts-list {
-        grid-template-columns: repeat(2, minmax(250px, 1fr)); /* 2 columns */
+        grid-template-columns: repeat(2, minmax(250px, 1fr));
     }
 }
 
@@ -827,21 +833,21 @@ footer {
     }
 
     #facts-list {
-        grid-template-columns: 1fr; /* 1 column for mobile */
+        grid-template-columns: 1fr;
     }
 
     .fact-lead {
-        font-size: 14px; /* Larger font for readability */
-        padding-right: 90px; /* Space for button */
+        font-size: 14px;
+        padding-right: 90px;
     }
 
     .fact-lead::after {
-        right: 85px; /* Adjust ellipsis position */
-        bottom: 30px; /* Align with larger font */
+        right: 85px;
+        bottom: 30px;
     }
 
     .read-more-btn {
-        font-size: 13px; /* Slightly larger button text */
+        font-size: 13px;
         padding: 7px 12px;
     }
 
@@ -861,6 +867,27 @@ footer {
 
     .youtube-icon img, .footer-youtube-icon img {
         border: none;
+    }
+
+    /* Додано адаптивні стилі для зменшення відступів */
+    .about, .contact, .collaboration, .privacy {
+        padding: 5px; /* Зменшено для мобільних */
+    }
+
+    .about-text, .contact-text, .collaboration-text, .privacy-text {
+        padding: 10px; /* Зменшено для мобільних */
+    }
+
+    .about-text p, .contact-text p, .collaboration-text p, .privacy-text p {
+        margin: 3px 0; /* Зменшено для мобільних */
+    }
+
+    .about h2, .contact h2, .collaboration h2, .privacy h2 {
+        margin: 3px 0 8px; /* Зменшено для мобільних */
+    }
+
+    ins.adsbygoogle {
+        margin: 0.25rem auto !important; /* Зменшено для мобільних */
     }
 }
 
@@ -929,7 +956,7 @@ footer {
 
 .video-container {
     position: relative;
-    padding-bottom: 56.25%; /* 16:9 */
+    padding-bottom: 56.25%;
     height: 0;
     overflow: hidden;
     max-width: 100%;
