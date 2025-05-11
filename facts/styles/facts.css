@@ -134,6 +134,14 @@
 
 .related-link p {
     margin: 0;
+    font-size: 16px; /* Узгоджено з .read-more */
+    color: #ffffff; /* Білий текст для гармонії */
+}
+
+.related-link .read-more::before {
+    content: "Читати ще: "; /* Додаємо "Читати ще:" перед гіперпосиланням */
+    color: #ffcc00; /* Жовтий колір, як у посилання */
+    font-weight: 500;
 }
 
 .article-video {
