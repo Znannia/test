@@ -3,40 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Захист від XSS через Content Security Policy -->
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://pagead2.googlesyndication.com https://www.googletagmanager.com; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://www.znannia.online; frame-src https://www.youtube.com;">
-    <!-- AdSense для монетизації -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7670201293870640" crossorigin="anonymous"></script>
     <meta name="google-site-verification" content="AS3pTU11DsjRwuy5LKmc0_WO1nd-QmU0lj0pQHFiiEk">
     <meta name="robots" content="index, follow">
-    <!-- Унікальний заголовок (60–70 символів) -->
     <title>{{TITLE}} - Знання для всіх</title>
-    <!-- Унікальний опис (100–160 символів) -->
     <meta name="description" content="{{DESCRIPTION}}">
-    <!-- 5–10 ключових слів -->
     <meta name="keywords" content="{{KEYWORDS}}">
-    <!-- Open Graph для соцмереж -->
     <meta property="og:title" content="{{TITLE}} - Знання для всіх">
     <meta property="og:description" content="{{DESCRIPTION}}">
     <meta property="og:url" content="https://www.znannia.online/facts/articles/{{ARTICLE_SLUG}}/">
     <meta property="og:image" content="{{COVER_IMAGE}}">
     <meta property="og:type" content="article">
-    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{TITLE}} - Знання для всіх">
     <meta name="twitter:description" content="{{DESCRIPTION}}">
     <meta name="twitter:image" content="{{COVER_IMAGE}}">
     <meta name="twitter:site" content="@ZnanniaOnline">
-    <!-- Канонічний URL -->
     <link rel="canonical" href="https://www.znannia.online/facts/articles/{{ARTICLE_SLUG}}/">
-    <!-- Favicon -->
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <!-- Стилі -->
     <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="/facts/styles/facts.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SYFG3B62FV"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -44,7 +33,6 @@
         gtag('js', new Date());
         gtag('config', 'G-SYFG3B62FV');
     </script>
-    <!-- Структуровані дані -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -111,7 +99,7 @@
             <div class="share-container">
                 <div class="share-icons-left">
                     <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.znannia.online/facts/articles/{{ARTICLE_SLUG}}/" target="_blank" class="share-icon facebook"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://t.me/share/url?url=https://www.znannia.online/facts/articles/{{ARTICLE_SLUG}}/&text={{TITLE}}" target="_blank" class="share-icon telegram"><i class="fab fa-telegram-plane"></i></a>
+                    <a href="https://t.me/share/url?url=https://www.znannia.online到期f/articles/{{ARTICLE_SLUG}}/&text={{TITLE}}" target="_blank" class="share-icon telegram"><i class="fab fa-telegram-plane"></i></a>
                 </div>
                 <button class="share-btn">Поділитися</button>
                 <div class="share-icons-right">
