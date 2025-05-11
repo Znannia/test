@@ -1,5 +1,5 @@
-const API_KEYS = ['AIzaSyANIlHucfoyt3cMP5d06cV4uQX3Xx-XPLE', 'AIzaSyAZRW_d8xXbCSudzTPPQ7pUqcLmH26MeuE'];
-const CHANNEL_ID = "UC0usNaN5iwML35qPxASBDWQ";
+const API_KEYS = ['AIzaSyANIlHucfoyt3cMP5d06cV4uQX3Xx-XPLE', 'AIzaSyAZRW_d8xXbCSudzTPPQ7pUqcLmH26MeuE'],
+      CHANNEL_ID = "UC0usNaN5iwML35qPxASBDWQ";
 let currentKeyIndex = 0;
 
 const playlistIds = {
@@ -208,7 +208,7 @@ async function fetchRandomVideos() {
   e.classList.add("loading");
   const s = localStorage.getItem(t), i = localStorage.getItem(a), r = Date.now();
   let currentPage = 1;
-  if  if (s && i && r - i < n) {
+  if (s && i && r - i < n) {
     let videos = JSON.parse(s).filter(e => e.snippet && e.snippet.resourceId && e.snippet.resourceId.videoId && e.snippet.title !== "Private video" && e.snippet.title !== "Deleted video");
     const paginatedVideos = videos.slice(0, VIDEOS_PER_PAGE * 3); // Завантажуємо 3 ряди
     await renderVideos(paginatedVideos, e);
@@ -255,7 +255,8 @@ async function fetchRandomVideos() {
       const s = await n.json(), r = s.items.filter(e => e.snippet && e.snippet.resourceId && e.snippet.resourceId.videoId && e.snippet.title !== "Private video" && e.snippet.title !== "Deleted video" && e.status && e.status.privacyStatus === "public");
       i.push(...r);
     }
-    const c = i.map(e => e.snippet.resourceId.videoId), o = await filterNonShorts(c), l = i.filter(e => o.includes(e.snippet.resourceId.videoId));
+    const c = i.map(e => e.snippet.resourceId.videoId), o = await filterNonShorts(c);
+    const l = i.filter(e => o.includes(e.snippet.resourceId.videoId));
     l.sort(() => Math.random() - 0.5);
     const paginatedVideos = l.slice(0, s); // Завантажуємо 9, 12 або 15 відео
     if (paginatedVideos.length === 0) {
@@ -408,7 +409,7 @@ document.getElementById("categories-btn")?.addEventListener("click", () => {
   e.previousElementSibling.setAttribute("aria-expanded", t);
 });
 
-// Нова логіка для завантаження статей
+// Оновлена логіка для завантаження статей
 document.addEventListener('DOMContentLoaded', () => {
   const factsList = document.getElementById('facts-list');
   if (!factsList) return;
@@ -418,13 +419,8 @@ document.addEventListener('DOMContentLoaded', () => {
     .then(articles => {
       factsList.innerHTML = ''; // Очищаємо статичний контент
 
-      // Визначаємо кількість статей залежно від сторінки
-      let articlesToDisplay = articles;
-      if (window.location.pathname.includes('index.html')) {
-        // На головній сторінці обмежуємо до 6 або 8 статей
-        const maxArticles = window.innerWidth > 1200 ? 8 : 6;
-        articlesToDisplay = articles.slice(0, maxArticles);
-      }
+      // Відображаємо всі статті на facts.html, 6 статей на інших сторінках
+      const articlesToDisplay = window.location.pathname.includes('facts.html') ? articles : articles.slice(0, 6);
 
       articlesToDisplay.forEach(article => {
         const factItem = document.createElement('div');
