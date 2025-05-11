@@ -1,5 +1,5 @@
-const API_KEYS = ['AIzaSyANIlHucfoyt3cMP5d06cV4uQX3Xx-XPLE', 'AIzaSyAZRW_d8xXbCSudzTPPQ7pUqcLmH26MeuE',],
-      CHANNEL_ID = "UC0usNaN5iwML35qPxASBDWQ";
+const API_KEYS = ['AIzaSyANIlHucfoyt3cMP5d06cV4uQX3Xx-XPLE', 'AIzaSyAZRW_d8xXbCSudzTPPQ7pUqcLmH26MeuE'];
+const CHANNEL_ID = "UC0usNaN5iwML35qPxASBDWQ";
 let currentKeyIndex = 0;
 
 const playlistIds = {
@@ -208,7 +208,7 @@ async function fetchRandomVideos() {
   e.classList.add("loading");
   const s = localStorage.getItem(t), i = localStorage.getItem(a), r = Date.now();
   let currentPage = 1;
-  if (s && i && r - i < n) {
+  if  if (s && i && r - i < n) {
     let videos = JSON.parse(s).filter(e => e.snippet && e.snippet.resourceId && e.snippet.resourceId.videoId && e.snippet.title !== "Private video" && e.snippet.title !== "Deleted video");
     const paginatedVideos = videos.slice(0, VIDEOS_PER_PAGE * 3); // Завантажуємо 3 ряди
     await renderVideos(paginatedVideos, e);
@@ -418,10 +418,15 @@ document.addEventListener('DOMContentLoaded', () => {
     .then(articles => {
       factsList.innerHTML = ''; // Очищаємо статичний контент
 
-      // Обмежуємо до 6 статей (2 ряди по 3)
-      const limitedArticles = articles.slice(0, 6);
+      // Визначаємо кількість статей залежно від сторінки
+      let articlesToDisplay = articles;
+      if (window.location.pathname.includes('index.html')) {
+        // На головній сторінці обмежуємо до 6 або 8 статей
+        const maxArticles = window.innerWidth > 1200 ? 8 : 6;
+        articlesToDisplay = articles.slice(0, maxArticles);
+      }
 
-      limitedArticles.forEach(article => {
+      articlesToDisplay.forEach(article => {
         const factItem = document.createElement('div');
         factItem.className = 'fact-item';
         factItem.innerHTML = `
