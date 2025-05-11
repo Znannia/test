@@ -413,12 +413,21 @@ document.addEventListener('DOMContentLoaded', () => {
   const factsList = document.getElementById('facts-list');
   if (!factsList) return;
 
+  // Визначаємо кількість статей залежно від ширини екрана
+  const screenWidth = window.innerWidth;
+  let articleCount = 6; // 2 ряди по 3 (малі екрани)
+  if (screenWidth >= 900 && screenWidth < 1200) articleCount = 8; // 2 ряди по 4
+  else if (screenWidth >= 1200) articleCount = 10; // 2 ряди по 5
+
   fetch('facts/articles/articles.json')
     .then(response => response.json())
     .then(articles => {
       factsList.innerHTML = ''; // Очищаємо статичний контент
 
-      articles.forEach(article => {
+      // Обмежуємо кількість статей
+      const limitedArticles = articles.slice(0, articleCount);
+
+      limitedArticles.forEach(article => {
         const factItem = document.createElement('div');
         factItem.className = 'fact-item';
         factItem.innerHTML = `
@@ -426,21 +435,12 @@ document.addEventListener('DOMContentLoaded', () => {
             <img src="${article.thumbnail}" alt="${article.title}" class="thumbnail" loading="lazy">
             <h4>${article.title}</h4>
           </a>
-          <div class="fact-lead" style="display:none">
+          <div class="fact-lead">
             <p>${article.description}</p>
+            <a href="${article.url}" class="read-more-btn">Читати далі</a>
           </div>
-          <button class="more-btn">Більше</button>
         `;
         factsList.appendChild(factItem);
-      });
-
-      // Обробка кнопок "Більше/Менше" для статей
-      document.querySelectorAll('.fact-item .more-btn').forEach(button => {
-        button.addEventListener('click', () => {
-          const factLead = button.previousElementSibling;
-          factLead.style.display = factLead.style.display === 'none' ? 'block' : 'none';
-          button.textContent = factLead.style.display === 'none' ? 'Більше' : 'Менше';
-        });
       });
     })
     .catch(error => {
