@@ -275,5 +275,8 @@
 
 /* Високоспецифічне правило для заголовка в intro-section */
 .facts-content .intro-section .title-wrapper h2 {
-    color: #FFF5E1 !important; /* Молочний колір із максимальним пріоритетом */
+    color: #FFF5E1 !important; /* Молочний колір */
+    background: none !important; /* Скасовуємо градієнт */
+    -webkit-background-clip: initial !important; /* Скасовуємо кліпінг */
+    -webkit-text-fill-color: #FFF5E1 !important; /* Явно задаємо колір тексту */
 }
