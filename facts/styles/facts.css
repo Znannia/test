@@ -19,6 +19,10 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
+.intro-section h2 {
+    color: #FFF5E1; /* Молочний колір для заголовка */
+}
+
 .title-wrapper {
     position: relative;
     margin-bottom: 20px;
@@ -219,7 +223,7 @@
         padding: 15px;
     }
 
-    .facts-content hರೀಕಾಸ್ತೆ h2 {
+    .facts-content h2 {
         font-size: 26px;
     }
 
