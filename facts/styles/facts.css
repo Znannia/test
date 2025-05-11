@@ -20,14 +20,14 @@
 
 .title-wrapper {
     position: relative;
-    margin-bottom: 30px; /* Збільшено для опускання риски */
+    margin-bottom: 30px;
     text-align: center;
 }
 
 .facts-content h1 {
-    color: #FFF5E1; /* Молочний колір */
+    color: #FFF5E1; /* Молочний колір без градієнта */
     font-size: 32px;
-    margin-bottom: 15px; /* Додано для відстані до риски */
+    margin-bottom: 15px;
     text-transform: uppercase;
     position: relative;
     display: inline-block;
@@ -42,7 +42,7 @@
 .title-wrapper::after {
     content: '';
     position: absolute;
-    bottom: -10px; /* Опускаємо риску нижче */
+    bottom: -10px;
     left: 50%;
     transform: translateX(-50%);
     width: 60%;
@@ -56,9 +56,9 @@
     font-size: 18px;
     line-height: 1.7;
     color: #ffffff;
-    text-align: left; /* Залишено вирівнювання за лівим краєм */
-    hyphens: auto; /* Уникаємо розривів слів */
-    word-break: break-word; /* Для довгих слів */
+    text-align: left;
+    hyphens: auto;
+    word-break: break-word;
 }
 
 .article-section {
@@ -105,25 +105,25 @@
     box-shadow: 0 4px 8px rgba(0,0,0,0.3);
     object-fit: cover;
     display: block;
-    margin: 1rem auto; /* Центрування зображення */
+    margin: 0.5rem auto; /* Зменшено відстань знизу */
     border: 2px solid transparent;
     border-image: linear-gradient(to right, #FFD700, #FF0000) 1;
-    float: none !important; /* Запобігаємо зміщенню праворуч */
+    float: none !important;
     transition: margin-bottom 0.3s ease;
 }
 
 .article-image[style*="aspect-ratio"],
 .article-image[style*="width"],
 .article-image[style*="height"] {
-    margin-bottom: calc(0.5rem + 0.5vw);
+    margin-bottom: 0.3rem; /* Зменшено для адаптивних зображень */
 }
 
 .article-image[style*="height"]:not([style*="width"]) {
-    margin-bottom: 0.8rem; /* Менший відступ для вертикальних */
+    margin-bottom: 0.4rem; /* Зменшено для вертикальних */
 }
 
 .article-image[style*="width"]:not([style*="height"]) {
-    margin-bottom: 1.2rem; /* Більший відступ для горизонтальних */
+    margin-bottom: 0.6rem; /* Зменшено для горизонтальних */
 }
 
 .article-video {
@@ -262,15 +262,15 @@
     }
 
     .article-image {
-        margin: 0.8rem auto;
+        margin: 0.4rem auto;
     }
 
     .article-image[style*="height"]:not([style*="width"]) {
-        margin-bottom: 0.6rem;
+        margin-bottom: 0.3rem;
     }
 
     .article-image[style*="width"]:not([style*="height"]) {
-        margin-bottom: 1rem;
+        margin-bottom: 0.5rem;
     }
 
     .article-video {
