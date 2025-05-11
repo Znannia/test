@@ -19,8 +19,8 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.intro-section h2 {
-    color: #FFF5E1; /* Молочний колір для заголовка */
+.facts-content .intro-section h2 {
+    color: #FFF5E1 !important; /* Молочний колір із пріоритетом */
 }
 
 .title-wrapper {
