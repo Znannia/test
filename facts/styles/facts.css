@@ -19,10 +19,6 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.facts-content .intro-section h2 {
-    color: #FFF5E1 !important; /* Молочний колір із пріоритетом */
-}
-
 .title-wrapper {
     position: relative;
     margin-bottom: 20px;
@@ -275,4 +271,9 @@
     .title-wrapper::after {
         width: 80%;
     }
+}
+
+/* Високоспецифічне правило для заголовка в intro-section */
+.facts-content .intro-section .title-wrapper h2 {
+    color: #FFF5E1 !important; /* Молочний колір із максимальним пріоритетом */
 }
