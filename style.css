@@ -188,6 +188,12 @@ h1 a {
     margin: 0 0 20px;
 }
 
+.facts-section {
+    background: linear-gradient(to bottom, #2e7d32, #145252); /* Gradient background */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
 .facts-section h3 a, .facts h2 a {
     color: #ffff00;
     text-decoration: none;
@@ -222,6 +228,32 @@ h1 a {
     text-align: center;
     border: 2px solid #1a3c34;
     padding: 10px;
+}
+
+.fact-item {
+    border: 2px solid #ffcc00; /* Changed border color to yellow */
+    border-radius: 8px; /* Rounded corners for distinction */
+    overflow: hidden; /* Ensure content fits within rounded borders */
+    background-color: #1b1b1b; /* Slightly darker background for contrast */
+}
+
+/* Responsive grid adjustments for facts section */
+@media (min-width: 900px) {
+    #facts-list {
+        grid-template-columns: repeat(4, 1fr); /* 4 items per row */
+    }
+}
+
+@media (min-width: 1200px) {
+    #facts-list {
+        grid-template-columns: repeat(5, 1fr); /* 5 items per row */
+    }
+}
+
+@media (max-width: 600px) {
+    #facts-list {
+        grid-template-columns: repeat(3, 1fr); /* 3 items per row */
+    }
 }
 
 .video-container, .fact-link {
@@ -302,7 +334,23 @@ h1 a {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.more-btn:hover {
+.read-more-btn {
+    display: inline-block;
+    background-color: #ffcc00;
+    color: #000000;
+    padding: 8px 12px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    margin-top: 5px;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+}
+
+.read-more-btn:hover {
     background-color: #e6b800;
 }
 
@@ -360,7 +408,17 @@ h1 a {
     padding: 10px;
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    display: none;
+}
+
+.fact-lead {
+    display: block; /* Always visible */
+    font-size: 14px;
+    line-height: 1.5;
+    color: #ffffff;
+    max-height: 4.5em; /* Limit to three lines */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    position: relative;
 }
 
 .description-box p, .fact-lead p {
