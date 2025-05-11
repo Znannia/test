@@ -26,7 +26,7 @@
 }
 
 .facts-content h2 {
-    color: #ffffff; /* Білий колір для заголовка */
+    color: #ffffff;
     font-size: 32px;
     margin-bottom: 10px;
     text-align: center;
@@ -148,7 +148,7 @@
     flex: 0 0 auto;
     padding: 10px;
     border-radius: 8px;
-    background-color: rgba(255, 215, 0, 0.15); /* Легкий жовтий відтінок */
+    background-color: rgba(255, 215, 0, 0.15);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
@@ -198,9 +198,8 @@
     background-color: #3b5998;
 }
 
-.share-icon.x {
-    background-color: #000000; /* Чорний фон для іконки X */
-    color: #ffffff;
+.share-icon.telegram {
+    background-color: #0088cc;
 }
 
 .share-icon.whatsapp {
@@ -220,7 +219,7 @@
         padding: 15px;
     }
 
-    .facts-content h2 {
+    .facts-content hರೀಕಾಸ್ತೆ h2 {
         font-size: 26px;
     }
 
