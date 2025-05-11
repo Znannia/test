@@ -216,7 +216,7 @@ h1 a {
     margin: 0 auto;
 }
 
-#latest-videos, #random-videos, #category-videos, #facts-list {
+#latest-videos, #random-videos, #category-videos {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 20px;
@@ -225,7 +225,11 @@ h1 a {
 }
 
 #facts-list {
-    grid-template-columns: repeat(3, minmax(300px, 1fr)); /* 3 items per row */
+    display: grid;
+    grid-template-columns: repeat(3, minmax(300px, 1fr)); /* 3 items per row on desktop */
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .video-item, .fact-item {
@@ -235,10 +239,10 @@ h1 a {
 }
 
 .fact-item {
-    border: 2px solid #ffcc00; /* Changed border color to yellow */
-    border-radius: 8px; /* Rounded corners for distinction */
-    overflow: hidden; /* Ensure content fits within rounded borders */
-    background-color: #1b1b1b; /* Slightly darker background for contrast */
+    border: 2px solid #ffcc00; /* Yellow border */
+    border-radius: 8px; /* Rounded corners */
+    overflow: hidden; /* Ensure content fits */
+    background-color: #1b1b1b; /* Darker background */
 }
 
 .video-container, .fact-link {
@@ -328,8 +332,9 @@ h1 a {
     font-size: 12px;
     font-weight: bold;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    margin-left: 5px;
-    display: inline-block;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
 }
 
 .read-more-btn:hover {
@@ -390,15 +395,17 @@ h1 a {
     padding: 10px;
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    position: relative;
+    min-height: 70px; /* Space for button */
 }
 
 .fact-lead {
     font-size: 12px; /* Smaller font */
     line-height: 1.5;
     color: #ffffff;
+    text-align: left; /* Align left */
     max-height: 4.5em; /* Limit to three lines */
     overflow: hidden;
-    text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 3; /* Limit to 3 lines */
     -webkit-box-orient: vertical;
@@ -406,7 +413,19 @@ h1 a {
 
 .fact-lead p {
     margin: 0;
-    display: inline;
+    padding-right: 80px; /* Space for button and ellipsis */
+}
+
+.fact-lead::after {
+    content: '...'; /* Ellipsis before button */
+    position: absolute;
+    bottom: 28px; /* Align with text */
+    right: 75px; /* Before button */
+    display: none; /* Show only when truncated */
+}
+
+.fact-lead.truncated::after {
+    display: inline; /* Show ellipsis when truncated */
 }
 
 .new {
@@ -428,7 +447,7 @@ footer {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    Healthy: 10px;
+    gap: 10px;
 }
 
 .footer-left a {
@@ -482,7 +501,7 @@ footer {
 }
 
 #categories-list li {
-    padding: 10 Основано на 10px;
+    padding: 10px;
 }
 
 #categories-list li a {
@@ -644,6 +663,10 @@ footer {
     .comment-list {
         max-width: 260px;
     }
+
+    #facts-list {
+        grid-template-columns: repeat(2, minmax(250px, 1fr)); /* 2 columns */
+    }
 }
 
 @media (max-width: 600px) {
@@ -801,6 +824,25 @@ footer {
 
     #latest-videos {
         grid-template-columns: 1fr;
+    }
+
+    #facts-list {
+        grid-template-columns: 1fr; /* 1 column for mobile */
+    }
+
+    .fact-lead {
+        font-size: 14px; /* Larger font for readability */
+        padding-right: 90px; /* Space for button */
+    }
+
+    .fact-lead::after {
+        right: 85px; /* Adjust ellipsis position */
+        bottom: 30px; /* Align with larger font */
+    }
+
+    .read-more-btn {
+        font-size: 13px; /* Slightly larger button text */
+        padding: 7px 12px;
     }
 
     footer {
