@@ -1,292 +1,167 @@
-/* Стилі для блогу */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-
-.facts-content {
-    max-width: 900px;
-    margin: 20px auto;
-    padding: 30px;
-    background-color: #0a2f2f;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.intro-section {
-    position: relative;
-    padding: 20px;
-    background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 0, 0, 0.1));
-    border-radius: 8px;
-    margin-bottom: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-.title-wrapper {
-    position: relative;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.facts-content .intro-section .title-wrapper h2#article-title {
-    color: #ffffff !important;
-    background: none !important;
-    background-image: none !important;
-    -webkit-background-clip: initial !important;
-    -webkit-text-fill-color: #ffffff !important;
-    font-size: 32px;
-    margin-bottom: 10px;
-    text-align: center;
-    text-transform: uppercase;
-    position: relative;
-    display: inline-block;
-}
-
-.title-wrapper::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60%;
-    height: 4px;
-    background: linear-gradient(to right, #FFD700, #FF0000);
-    border-radius: 2px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-.article-text {
-    font-size: 18px;
-    line-height: 1.7;
-    color: #ffffff;
-}
-
-.article-section {
-    margin-bottom: 20px;
-    padding: 15px;
-    background-color: #1a3c34;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-.article-section h3 {
-    color: #ffcc00;
-    font-size: 26px;
-    margin-bottom: 10px;
-}
-
-.article-section p {
-    margin-bottom: 10px;
-}
-
-.article-section a {
-    color: #ffcc00;
-    text-decoration: none;
-}
-
-.article-section a:hover {
-    color: #e6b800;
-}
-
-.article-image {
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    object-fit: cover;
-    margin: 20px auto;
-    display: block;
-    border: 2px solid transparent;
-    border-image: linear-gradient(to right, #FFD700, #FF0000) 1;
-}
-
-.article-video {
-    position: relative;
-    width: 100%;
-    max-width: 600px;
-    aspect-ratio: 16 / 9;
-    margin: 20px auto;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.article-video iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 5px;
-}
-
-/* Стилі для кнопок навігації та поширення */
-.share-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 20px 0;
-    flex-wrap: wrap;
-    position: relative;
-    width: 100%;
-}
-
-.nav-btn {
-    background-color: #ffcc00;
-    color: #000000;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-size: 16px;
-    font-weight: bold;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    transition: background-color 0.3s;
-    flex: 0 0 auto;
-}
-
-.nav-btn:hover {
-    background-color: #e6b800;
-}
-
-.share-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    flex: 0 0 auto;
-    padding: 10px;
-    border-radius: 8px;
-    background-color: rgba(255, 215, 0, 0.3);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-.share-icons-left,
-.share-icons-right {
-    display: flex;
-    gap: 10px;
-}
-
-.share-btn {
-    background-color: #28a745;
-    color: #ffffff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-    transition: background-color 0.3s;
-}
-
-.share-btn:hover {
-    background-color: #218838;
-}
-
-.share-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    text-align: center;
-    font-size: 20px;
-    color: #ffffff;
-    transition: transform 0.3s, box-shadow 0.3s;
-    border: 1px solid #ffffff;
-}
-
-.share-icon:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 8px rgba(255, 255, 0, 0.5);
-}
-
-.share-icon.facebook {
-    background-color: #3b5998;
-}
-
-.share-icon.x {
-    background-color: #000000;
-}
-
-.share-icon.x img.share-icon-img {
-    width: 20px !important;
-    height: 20px !important;
-    object-fit: contain !important;
-    display: block;
-    filter: brightness(1.2) contrast(1.2);
-}
-
-.share-icon-img {
-    width: 20px;
-    height: 20px;
-    object-fit: contain;
-}
-
-.share-icon.whatsapp {
-    background-color: #25d366;
-}
-
-.share-icon.viber {
-    background-color: #665cac;
-}
-
-@media (max-width: 600px) {
-    .facts-content {
-        padding: 15px;
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7670201293870640"
+     crossorigin="anonymous"></script>
+    <meta name="robots" content="index, follow">
+    <title>{{TITLE}} - Знання для всіх</title>
+    <meta name="description" content="{{DESCRIPTION}}">
+    <meta name="keywords" content="{{KEYWORDS}}">
+    <meta property="og:title" content="{{TITLE}} - Знання для всіх">
+    <meta property="og:description" content="{{DESCRIPTION}}">
+    <meta property="og:url" content="{{URL}}">
+    <meta property="og:image" content="{{COVER_IMAGE}}">
+    <meta property="og:type" content="article">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{TITLE}} - Знання для всіх">
+    <meta name="twitter:description" content="{{DESCRIPTION}}">
+    <meta name="twitter:image" content="{{COVER_IMAGE}}">
+    <link rel="canonical" href="{{URL}}">
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="../styles/facts.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-SYFG3B62FV"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-SYFG3B62FV');
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "{{TITLE}}",
+        "description": "{{DESCRIPTION}}",
+        "image": "{{COVER_IMAGE}}",
+        "author": {
+            "@type": "Organization",
+            "name": "Знання для всіх",
+            "url": "https://znannia.github.io/test/"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Знання для всіх",
+            "logo": { "@type": "ImageObject", "url": "https://znannia.github.io/test/logo.png" }
+        },
+        "url": "{{URL}}",
+        "datePublished": "{{DATE}}"
     }
-
-    .intro-section {
-        padding: 15px;
-    }
-
-    .facts-content h2 {
-        font-size: 26px;
-    }
-
-    .article-text {
-        font-size: 16px;
-    }
-
-    .article-section h3 {
-        font-size: 22px;
-    }
-
-    .article-image {
-        margin: 15px auto;
-    }
-
-    .article-video {
-        max-width: 100%;
-    }
-
-    .share-nav {
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .nav-btn {
-        width: 100%;
-        text-align: center;
-    }
-
-    .share-container {
-        flex-direction: row;
-        width: 100%;
-        padding: 8px;
-        justify-content: center;
-    }
-
-    .share-btn {
-        width: auto;
-        text-align: center;
-    }
-
-    .share-icons-left,
-    .share-icons-right {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 8px;
-    }
-
-    .title-wrapper::after {
-        width: 80%;
-    }
-}
+    </script>
+</head>
+<body>
+    <header role="banner">
+        <div class="logo">
+            <a href="../../index.html"><img src="../../logo.png" alt="Логотип Знання для всіх" loading="lazy"></a>
+            <div class="youtube-icon">
+                <a href="https://www.youtube.com/@ЗнанняДляВсіхТак" target="_blank"><img src="../../youtube-icon.png" alt="YouTube канал Знання для всіх" loading="lazy"></a>
+            </div>
+        </div>
+        <div class="header-center">
+            <p class="welcome-text">ВІТАЄМО НА КАНАЛІ</p>
+            <h1><a href="../../index.html">ЗНАННЯ ДЛЯ ВСІХ</a></h1>
+            <p class="subtitle">Тести й вікторини - для всієї родини!</p>
+            <p class="slogan">Перевірте свої знання!</p>
+        </div>
+        <div class="header-right">
+            <div id="subscribers" class="subscribers"></div>
+            <a href="https://www.youtube.com/@ЗнанняДляВсіхТак?sub_confirmation=1" target="_blank" class="subscribe-btn">Підписатися</a>
+        </div>
+    </header>
+    <div class="divider"></div>
+    <div class="category-buttons">
+        <a href="../../geography.html" class="category-btn">Географія</a>
+        <a href="../../history.html" class="category-btn">Історія</a>
+        <a href="../../bible.html" class="category-btn">Біблія</a>
+        <a href="../../ukraine.html" class="category-btn">Україна</a>
+        <a href="../../general-knowledge.html" class="category-btn">Загальні знання</a>
+        <a href="../../logic.html" class="category-btn">Логіка</a>
+        <a href="../../what-is-extra.html" class="category-btn">Що зайве</a>
+        <a href="../../never-lose.html" class="category-btn">Не програєш</a>
+    </div>
+    <div class="facts-content">
+        <div class="intro-section">
+            <div class="title-wrapper">
+                <h2>{{TITLE}}</h2>
+            </div>
+            <div class="article-text">
+                <!-- Перший абзац (лід) -->
+                {{LEAD_PARAGRAPH}}
+            </div>
+        </div>
+        <div class="share-nav">
+            <a href="../../index.html" class="nav-btn">На головну сторінку</a>
+            <div class="share-container">
+                <div class="share-icons-left">
+                    <a href="https://www.facebook.com/sharer/sharer.php?u={{URL}}" target="_blank" class="share-icon facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/intent/tweet?url={{URL}}&text={{TITLE}}" target="_blank" class="share-icon x"><i class="fab fa-x-twitter"></i></a>
+                </div>
+                <button class="share-btn">Поділитися</button>
+                <div class="share-icons-right">
+                    <a href="https://api.whatsapp.com/send?text={{TITLE}}%20{{URL}}" target="_blank" class="share-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="viber://forward?text={{TITLE}}%20{{URL}}" target="_blank" class="share-icon viber"><i class="fab fa-viber"></i></a>
+                </div>
+            </div>
+            <a href="../../facts.html" class="nav-btn">До інших цікавинок</a>
+        </div>
+        <div class="article-text">
+            <img src="./cover.jpg" alt="{{TITLE}}" class="article-image" loading="lazy">
+            <!-- Решта вмісту статті -->
+            {{REMAINING_CONTENT}}
+        </div>
+        <div class="share-nav">
+            <a href="../../index.html" class="nav-btn">На головну сторінку</a>
+            <div class="share-container">
+                <div class="share-icons-left">
+                    <a href="https://www.facebook.com/sharer/sharer.php?u={{URL}}" target="_blank" class="share-icon facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/intent/tweet?url={{URL}}&text={{TITLE}}" target="_blank" class="share-icon x"><i class="fab fa-x-twitter"></i></a>
+                </div>
+                <button class="share-btn">Поділитися</button>
+                <div class="share-icons-right">
+                    <a href="https://api.whatsapp.com/send?text={{TITLE}}%20{{URL}}" target="_blank" class="share-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
+                    <a href="viber://forward?text={{TITLE}}%20{{URL}}" target="_blank" class="share-icon viber"><i class="fab fa-viber"></i></a>
+                </div>
+            </div>
+            <a href="../../facts.html" class="nav-btn">До інших цікавинок</a>
+        </div>
+    </div>
+    <footer role="contentinfo">
+        <div class="footer-left">
+            <div class="footer-youtube-icon">
+                <a href="https://www.youtube.com/@ЗнанняДляВсіхТак" target="_blank"><img src="../../youtube-icon.png" alt="YouTube канал Знання для всіх" loading="lazy"></a>
+            </div>
+            <p><a href="mailto:znanniadliavsikh@gmail.com">znanniadliavsikh@gmail.com</a></p>
+        </div>
+        <div class="footer-center">
+            <button id="categories-btn" aria-expanded="false" aria-controls="categories-list">Категорії</button>
+            <ul id="categories-list">
+                <li><a href="../../geography.html">Географія</a></li>
+                <li><a href="../../history.html">Історія</a></li>
+                <li><a href="../../bible.html">Біблія</a></li>
+                <li><a href="../../ukraine.html">Україна</a></li>
+                <li><a href="../../general-knowledge.html">Загальні знання</a></li>
+                <li><a href="../../logic.html">Логіка</a></li>
+                <li><a href="../../what-is-extra.html">Що зайве</a></li>
+                <li><a href="../../never-lose.html">Не програєш</a></li>
+                <li><a href="../../facts.html">Цікаві факти</a></li>
+            </ul>
+            <div class="footer-links">
+                <a href="../../about.html">Про нас</a>
+                <a href="../../contact.html">Контакти</a>
+                <a href="../../collaboration.html">Співпраця</a>
+                <a href="../../privacy.html">Політика конфіденційності</a>
+            </div>
+        </div>
+        <div class="footer-right">
+            <a href="../../index.html"><img src="../../logo.png" alt="Логотип Знання для всіх" class="footer-logo" loading="lazy"></a>
+            <p>© 2025 Знання для всіх</p>
+        </div>
+    </footer>
+    <script src="../../script.js"></script>
+    <script src="../scripts/facts.js"></script>
+</body>
+</html>
