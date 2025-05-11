@@ -41,4 +41,10 @@
         "thumbnail": "facts/articles/ancient-egypt/cover.jpg",
         "description": "Від пірамід, що будувалися без техніки, до мумій із прокльонами — відкрийте 10 шокуючих фактів про Давній Єгипет, які розкривають таємниці фараонів!"
     }
+    {
+    "title": "Винаходи, що змінили світ: Від колеса до смартфона",
+    "url": "facts/articles/great-inventions/",
+    "thumbnail": "facts/articles/great-inventions/cover.jpg",
+    "description": "Від колеса до смартфона — дізнайтесь про винаходи, які сформували історію людства!"
+}
 ]
