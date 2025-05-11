@@ -413,19 +413,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const factsList = document.getElementById('facts-list');
   if (!factsList) return;
 
-  // Визначаємо кількість статей залежно від ширини екрана
-  const screenWidth = window.innerWidth;
-  let articleCount = 6; // 2 ряди по 3 (малі екрани)
-  if (screenWidth >= 900 && screenWidth < 1200) articleCount = 8; // 2 ряди по 4
-  else if (screenWidth >= 1200) articleCount = 10; // 2 ряди по 5
-
   fetch('facts/articles/articles.json')
     .then(response => response.json())
     .then(articles => {
       factsList.innerHTML = ''; // Очищаємо статичний контент
 
-      // Обмежуємо кількість статей
-      const limitedArticles = articles.slice(0, articleCount);
+      // Обмежуємо до 6 статей (2 ряди по 3)
+      const limitedArticles = articles.slice(0, 6);
 
       limitedArticles.forEach(article => {
         const factItem = document.createElement('div');
@@ -436,7 +430,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <h4>${article.title}</h4>
           </a>
           <div class="fact-lead">
-            <p>${article.description}</p>
+            <p>${article.description}...</p>
             <a href="${article.url}" class="read-more-btn">Читати далі</a>
           </div>
         `;
