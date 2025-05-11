@@ -52,6 +52,7 @@
     font-size: 18px;
     line-height: 1.7;
     color: #ffffff;
+    text-align: center; /* Додано для центрування вмісту, включаючи зображення */
 }
 
 .article-section {
@@ -81,6 +82,23 @@
     color: #e6b800;
 }
 
+.read-more {
+    display: inline-block;
+    padding: 8px 12px;
+    background-color: rgba(255, 215, 0, 0.15); /* Напівпрозорий фон, як у share-container */
+    border-radius: 5px;
+    color: #ffcc00; /* Колір, як у article-section a */
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    /* Додано для гіперпосилань "Читайте також" */
+}
+.read-more:hover {
+    background-color: rgba(255, 215, 0, 0.3);
+    color: #e6b800; /* Колір при наведенні, як у article-section a:hover */
+    /* Додано для гіперпосилань "Читайте також" */
+}
+
 .article-image {
     max-width: 100%;
     height: auto;
@@ -91,6 +109,9 @@
     display: block;
     border: 2px solid transparent;
     border-image: linear-gradient(to right, #FFD700, #FF0000) 1;
+    float: none !important; /* Запобігаємо зміщенню через float */
+    text-align: center !important; /* Явне центрування */
+    /* Оновлено для гарантії центрування */
 }
 
 .article-video {
