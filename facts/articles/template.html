@@ -3,33 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Код AdSense для монетизації. Переконайтеся, що ads.txt доступний за https://www.znannia.online/ads.txt -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7670201293870640"
-        crossorigin="anonymous"></script>
+    <!-- Захист від XSS через Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://pagead2.googlesyndication.com https://www.googletagmanager.com; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: https://www.znannia.online; frame-src https://www.youtube.com;">
+    <!-- AdSense для монетизації -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7670201293870640" crossorigin="anonymous"></script>
     <meta name="google-site-verification" content="AS3pTU11DsjRwuy5LKmc0_WO1nd-QmU0lj0pQHFiiEk">
     <meta name="robots" content="index, follow">
-    <!-- Унікальний заголовок статті (рекомендується 60–70 символів) -->
+    <!-- Унікальний заголовок (60–70 символів) -->
     <title>{{TITLE}} - Знання для всіх</title>
-    <!-- Унікальний опис статті (100–160 символів) -->
+    <!-- Унікальний опис (100–160 символів) -->
     <meta name="description" content="{{DESCRIPTION}}">
-    <!-- 5–10 релевантних ключових слів -->
+    <!-- 5–10 ключових слів -->
     <meta name="keywords" content="{{KEYWORDS}}">
+    <!-- Open Graph для соцмереж -->
     <meta property="og:title" content="{{TITLE}} - Знання для всіх">
     <meta property="og:description" content="{{DESCRIPTION}}">
     <meta property="og:url" content="https://www.znannia.online/facts/articles/{{ARTICLE_SLUG}}/">
     <meta property="og:image" content="{{COVER_IMAGE}}">
     <meta property="og:type" content="article">
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{TITLE}} - Знання для всіх">
     <meta name="twitter:description" content="{{DESCRIPTION}}">
     <meta name="twitter:image" content="{{COVER_IMAGE}}">
+    <meta name="twitter:site" content="@ZnanniaOnline">
+    <!-- Канонічний URL -->
     <link rel="canonical" href="https://www.znannia.online/facts/articles/{{ARTICLE_SLUG}}/">
+    <!-- Favicon -->
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <!-- Стилі -->
     <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="/facts/styles/facts.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- Google Analytics для відстеження трафіку -->
+    <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SYFG3B62FV"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -37,7 +44,7 @@
         gtag('js', new Date());
         gtag('config', 'G-SYFG3B62FV');
     </script>
-    <!-- Структуровані дані для SEO. Переконайтеся, що sitemap.xml доступний за https://www.znannia.online/sitemap.xml -->
+    <!-- Структуровані дані -->
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -46,9 +53,8 @@
         "description": "{{DESCRIPTION}}",
         "image": "{{COVER_IMAGE}}",
         "author": {
-            "@type": "Organization",
-            "name": "Знання для всіх",
-            "url": "https://www.znannia.online/"
+            "@type": "Person",
+            "name": "{{AUTHOR_NAME}}"
         },
         "publisher": {
             "@type": "Organization",
@@ -56,7 +62,8 @@
             "logo": { "@type": "ImageObject", "url": "https://www.znannia.online/logo.png" }
         },
         "url": "https://www.znannia.online/facts/articles/{{ARTICLE_SLUG}}/",
-        "datePublished": "{{DATE}}"
+        "datePublished": "{{DATE}}",
+        "dateModified": "{{DATE_MODIFIED}}"
     }
     </script>
 </head>
@@ -69,10 +76,10 @@
             </div>
         </div>
         <div class="header-center">
-            <p class="welcome-text">ВІТАЄМО НА КАНАЛІ</p>
-            <h1><a href="/">ЗНАННЯ ДЛЯ ВСІХ</a></h1>
-            <p class="subtitle">Тести й вікторини - для всієї родини!</p>
-            <p class="slogan">Перевірте свої знання!</p>
+            <p class="welcome-text">Вітаємо на каналі</p>
+            <div class="site-title"><a href="/">Знання для всіх</a></div>
+            <p class="subtitle">Тести й вікторини для всієї родини</p>
+            <p class="slogan">Перевірте свої знання</p>
         </div>
         <div class="header-right">
             <div id="subscribers" class="subscribers"></div>
@@ -80,7 +87,6 @@
         </div>
     </header>
     <div class="divider"></div>
-    <!-- Категорії приховуються в мобільній версії через facts.css -->
     <div class="category-buttons">
         <a href="/geography.html" class="category-btn">Географія</a>
         <a href="/history.html" class="category-btn">Історія</a>
@@ -94,14 +100,14 @@
     <div class="facts-content">
         <div class="intro-section">
             <div class="title-wrapper">
-                <h2>{{TITLE}}</h2>
+                <h1>{{TITLE}}</h1>
             </div>
             <div class="article-text">
                 {{LEAD_PARAGRAPH}}
             </div>
         </div>
         <div class="share-nav">
-            <a href="/" class="nav-btn">На головну сторінку</a>
+            <a href="/" class="nav-btn">На головну</a>
             <div class="share-container">
                 <div class="share-icons-left">
                     <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.znannia.online/facts/articles/{{ARTICLE_SLUG}}/" target="_blank" class="share-icon facebook"><i class="fab fa-facebook-f"></i></a>
@@ -115,27 +121,43 @@
             </div>
             <a href="/facts.html" class="nav-btn">До інших цікавинок</a>
         </div>
-        <!-- Контент статті: має бути 800–1000 слів, унікальний, із зображеннями (<500 КБ, 800x450px) і відео -->
         <div class="article-text">
-            <img src="./cover.jpg" alt="{{TITLE}}" class="article-image" loading="lazy">
+            <picture>
+                <source srcset="{{COVER_IMAGE_WEBP}}" type="image/webp">
+                <img src="{{COVER_IMAGE}}" srcset="{{COVER_IMAGE_400}} 400w, {{COVER_IMAGE_800}} 800w" sizes="(max-width: 600px) 400px, 800px" alt="{{TITLE}}" class="article-image" loading="lazy">
+            </picture>
+            <ins class="adsbygoogle" style="display:block; margin: 1rem auto;" data-ad-client="ca-pub-7670201293870640" data-ad-slot="1234567890" data-ad-format="auto"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
             {{REMAINING_CONTENT}}
-            <!-- Секція для відео, якщо VIDEO_ID задано -->
             {{if VIDEO_ID}}
             <div class="article-section">
-                <h3>Перевірте свої знання у нашій вікторині! 🎥</h3>
-                <p>Хочете глибше зануритися в тему? Спробуйте нашу захопливу вікторину на YouTube-каналі <a href="https://www.youtube.com/@ЗнанняДляВсіхТак" target="_blank">Знання для всіх</a>! 👇</p>
+                <h2>Перевірте свої знання у нашій вікторині</h2>
+                <p>Поглибте знання за допомогою вікторини на YouTube-каналі <a href="https://www.youtube.com/@ЗнанняДляВсіхТак" target="_blank">Знання для всіх</a>.</p>
                 <div class="article-video">
                     <iframe src="https://www.youtube.com/embed/{{VIDEO_ID}}" frameborder="0" allowfullscreen loading="lazy"></iframe>
                 </div>
             </div>
             <div class="article-section">
-                <h3>Яка історія вас вразила? 💬</h3>
-                <p>Поділіться в коментарях до нашого відео, що зачепило найбільше! І <a href="https://www.youtube.com/@ЗнанняДляВсіхТак?sub_confirmation=1" target="_blank">підпишіться на канал</a>, щоб не пропустити нові вікторини для всієї родини! 🌟</p>
+                <h2>Яка історія вас вразила?</h2>
+                <p>Поділіться думками в коментарях до відео на <a href="https://www.youtube.com/@ЗнанняДляВсіхТак" target="_blank">YouTube</a>. <a href="https://www.youtube.com/@ЗнанняДляВсіхТак?sub_confirmation=1" target="_blank">Підпишіться</a>, щоб не пропустити нові вікторини.</p>
             </div>
             {{/if}}
+            <div class="article-section">
+                <h2>Читайте також</h2>
+                <ul>
+                    {{if RELATED_ARTICLE_1}}
+                    <li><a href="/facts/articles/{{RELATED_ARTICLE_1}}">{{RELATED_TITLE_1}}</a></li>
+                    {{/if}}
+                    {{if RELATED_ARTICLE_2}}
+                    <li><a href="/facts/articles/{{RELATED_ARTICLE_2}}">{{RELATED_TITLE_2}}</a></li>
+                    {{/if}}
+                </ul>
+            </div>
         </div>
         <div class="share-nav">
-            <a href="/" class="nav-btn">На головну сторінку</a>
+            <a href="/" class="nav-btn">На головну</a>
             <div class="share-container">
                 <div class="share-icons-left">
                     <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.znannia.online/facts/articles/{{ARTICLE_SLUG}}/" target="_blank" class="share-icon facebook"><i class="fab fa-facebook-f"></i></a>
@@ -170,7 +192,6 @@
                 <li><a href="/never-lose.html">Не програєш</a></li>
                 <li><a href="/facts.html">Цікаві факти</a></li>
             </ul>
-            <!-- Переконайтеся, що about.html, contact.html, privacy.html, collaboration.html створені -->
             <div class="footer-links">
                 <a href="/about.html">Про нас</a>
                 <a href="/contact.html">Контакти</a>
@@ -183,7 +204,7 @@
             <p>© 2025 Знання для всіх</p>
         </div>
     </footer>
-    <script src="/script.js"></script>
-    <script src="/facts/scripts/facts.js"></script>
+    <script defer src="/script.js"></script>
+    <script defer src="/facts/scripts/facts.js"></script>
 </body>
 </html>
