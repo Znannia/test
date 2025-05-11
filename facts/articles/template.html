@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7670201293870640"
         crossorigin="anonymous"></script>
+    <meta name="google-site-verification" content="AS3pTU11DsjRwuy5LKmc0_WO1nd-QmU0lj0pQHFiiEk">
     <meta name="robots" content="index, follow">
     <title>{{TITLE}} - Знання для всіх</title>
     <meta name="description" content="{{DESCRIPTION}}">
@@ -101,8 +102,8 @@
                 </div>
                 <button class="share-btn">Поділитися</button>
                 <div class="share-icons-right">
-                    <a href="https://api.whatsapp.com/send?text={{TITLE}}%20{{URL}}" target="_blank" class="share-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
                     <a href="viber://forward?text={{TITLE}}%20{{URL}}" target="_blank" class="share-icon viber"><i class="fab fa-viber"></i></a>
+                    <a href="https://api.whatsapp.com/send?text={{TITLE}}%20{{URL}}" target="_blank" class="share-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
             <a href="../../facts.html" class="nav-btn">До інших цікавинок</a>
@@ -110,6 +111,20 @@
         <div class="article-text">
             <img src="./cover.jpg" alt="{{TITLE}}" class="article-image" loading="lazy">
             {{REMAINING_CONTENT}}
+            <!-- Додаємо секцію для відео, якщо VIDEO_ID задано -->
+            {{if VIDEO_ID}}
+            <div class="article-section">
+                <h3>Перевірте свої знання у нашій вікторині! 🎥</h3>
+                <p>Хочете глибше зануритися в тему? Спробуйте нашу захопливу вікторину на YouTube-каналі <a href="https://www.youtube.com/@ЗнанняДляВсіхТак" target="_blank">Знання для всіх</a>! 👇</p>
+                <div class="article-video">
+                    <iframe src="https://www.youtube.com/embed/{{VIDEO_ID}}" frameborder="0" allowfullscreen loading="lazy"></iframe>
+                </div>
+            </div>
+            <div class="article-section">
+                <h3>Яка історія вас вразила? 💬</h3>
+                <p>Поділіться в коментарях до нашого відео, що зачепило найбільше! І <a href="https://www.youtube.com/@ЗнанняДляВсіхТак?sub_confirmation=1" target="_blank">підпишіться на канал</a>, щоб не пропустити нові вікторини для всієї родини! 🌟</p>
+            </div>
+            {{/if}}
         </div>
         <div class="share-nav">
             <a href="../../index.html" class="nav-btn">На головну сторінку</a>
@@ -120,8 +135,8 @@
                 </div>
                 <button class="share-btn">Поділитися</button>
                 <div class="share-icons-right">
-                    <a href="https://api.whatsapp.com/send?text={{TITLE}}%20{{URL}}" target="_blank" class="share-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
                     <a href="viber://forward?text={{TITLE}}%20{{URL}}" target="_blank" class="share-icon viber"><i class="fab fa-viber"></i></a>
+                    <a href="https://api.whatsapp.com/send?text={{TITLE}}%20{{URL}}" target="_blank" class="share-icon whatsapp"><i class="fab fa-whatsapp"></i></a>
                 </div>
             </div>
             <a href="../../facts.html" class="nav-btn">До інших цікавинок</a>
