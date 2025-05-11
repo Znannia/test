@@ -103,12 +103,29 @@
     border-radius: 5px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     object-fit: cover;
-    margin: 20px auto;
     display: block;
     border: 2px solid transparent;
     border-image: linear-gradient(to right, #FFD700, #FF0000) 1;
     float: none !important; /* Запобігаємо зміщенню через float */
     text-align: center !important; /* Явне центрування */
+    margin: 1rem auto; /* Використовуємо rem для адаптивності */
+}
+
+/* Адаптація відступів залежно від формату зображення */
+.article-image[style*="aspect-ratio"], /* Для зображень із заданим співвідношенням */
+.article-image[style*="width"], /* Для зображень із заданою шириною */
+.article-image[style*="height"] { /* Для зображень із заданою висотою */
+    margin-bottom: calc(0.5rem + 0.5vw); /* Динамічний відступ залежно від ширини в'юпорту */
+}
+
+/* Для вертикальних зображень (вищі, ніж ширші) */
+.article-image[style*="height"]:not([style*="width"]) {
+    margin-bottom: 0.8rem; /* Менший відступ для високих зображень */
+}
+
+/* Для горизонтальних зображень (ширші, ніж вищі) */
+.article-image[style*="width"]:not([style*="height"]) {
+    margin-bottom: 1.2rem; /* Трішки більший відступ для широких зображень */
 }
 
 .article-video {
@@ -250,7 +267,15 @@
     }
 
     .article-image {
-        margin: 15px auto;
+        margin: 0.8rem auto; /* Зменшено для мобільних пристроїв */
+    }
+
+    .article-image[style*="height"]:not([style*="width"]) {
+        margin-bottom: 0.6rem; /* Ще менший відступ для вертикальних зображень на мобільних */
+    }
+
+    .article-image[style*="width"]:not([style*="height"]) {
+        margin-bottom: 1rem; /* Трішки більший відступ для горизонтальних зображень на мобільних */
     }
 
     .article-video {
