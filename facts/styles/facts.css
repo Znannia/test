@@ -20,14 +20,14 @@
 
 .title-wrapper {
     position: relative;
-    margin-bottom: 20px;
+    margin-bottom: 30px; /* Збільшено для відступу риски */
     text-align: center;
 }
 
 .facts-content h1 {
     color: #FFF5E1; /* Молочний колір */
     font-size: 32px;
-    margin-bottom: 10px;
+    margin-bottom: 15px; /* Додано відступ під заголовком */
     text-align: center;
     text-transform: uppercase;
     position: relative;
@@ -44,7 +44,7 @@
 .title-wrapper::after {
     content: '';
     position: absolute;
-    bottom: 0;
+    bottom: -10px; /* Опускаємо риску нижче */
     left: 50%;
     transform: translateX(-50%);
     width: 60%;
@@ -102,13 +102,15 @@
 
 .read-more {
     display: inline-block;
-    padding: 8px 12px;
+    padding: 6px 10px; /* Менший розмір для ненав’язливості */
     background-color: rgba(255, 215, 0, 0.15);
     border-radius: 5px;
     color: #ffcc00;
     text-decoration: none;
     font-weight: 500;
+    font-size: 16px; /* Менший шрифт для гармонії */
     transition: background-color 0.3s ease, color 0.3s ease;
+    margin: 10px 0; /* Відступи для відокремлення від тексту */
 }
 
 .read-more:hover {
@@ -132,18 +134,6 @@
 
 .related-link p {
     margin: 0;
-}
-
-.article-image {
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    object-fit: cover;
-    margin: 10px auto;
-    display: block;
-    border: 2px solid transparent;
-    border-image: linear-gradient(to right, #FFD700, #FF0000) 1;
 }
 
 .article-video {
@@ -303,10 +293,6 @@
 
     .related-link h3 {
         font-size: 20px;
-    }
-
-    .article-image {
-        margin: 8px auto;
     }
 
     .article-video {
