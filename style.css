@@ -636,81 +636,104 @@ ins.adsbygoogle {
     header {
         flex-direction: column;
         align-items: center;
-        padding: 10px;
-        min-height: 220px;
+        padding: 5px; /* Зменшено відступи */
+        min-height: 110px; /* Зменшено висоту вдвічі з 220px до 110px */
     }
 
     .logo {
-        display: none;
+        display: flex; /* Повертаємо логотип */
+        position: absolute;
+        left: 10px; /* Відступ зліва */
+        top: 60px; /* Вирівнювання з підзаголовком */
+    }
+
+    .logo img {
+        width: 30px; /* Розмір логотипа */
+        height: 30px;
+        border: 1px solid #FFD700;
+        border-radius: 50%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .logo .youtube-icon {
+        display: none; /* Прибираємо прямокутний значок YouTube */
     }
 
     .header-center {
         order: 1;
         text-align: center;
+        width: 100%;
     }
 
     .welcome-text {
         font-size: 14px;
-        margin: 5px 0;
+        margin: 2px 0; /* Зменшено відступи */
+        line-height: 1;
     }
 
     h1 {
-        font-size: 28px;
-        margin: 5px 0;
+        font-size: 36px; /* Збільшено розмір для заповнення екрану */
+        margin: 2px 10px; /* Невеликі відступи по краях */
+        line-height: 1;
     }
 
     .subtitle {
         font-size: 14px;
         padding: 3px 6px;
-        margin: 5px 0;
+        margin: 2px 0;
+        line-height: 1.2;
+        position: relative;
     }
 
     .slogan {
         font-size: 16px;
-        margin: 5px 0;
+        margin: 2px 0;
+        line-height: 1;
     }
 
     .header-right {
-        order: 3;
+        order: 2;
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        width: 100%;
-        margin-top: 10px;
-        padding: 0 5px;
+        justify-content: flex-end;
+        position: absolute;
+        right: 10px; /* Відступ справа */
+        top: 60px; /* Вирівнювання з підзаголовком */
+        width: auto;
+        margin: 0;
+        padding: 0;
     }
 
     .header-right::before {
-        content: '';
-        background: url('logo.png') no-repeat center;
-        background-size: 30px;
-        width: 30px;
-        height: 30px;
-        display: inline-block;
-        flex: 0 0 auto;
+        content: none; /* Прибираємо псевдоелемент логотипа */
+    }
+
+    .subscribers {
+        display: none; /* Прибираємо кількість підписників */
     }
 
     .subscribe-btn {
-        font-size: 14px;
-        padding: 6px 12px;
-        margin: 0;
-        background-color: #ff0000;
-        color: #ffffff;
-        border-radius: 4px;
-        text-decoration: none;
-        flex: 1;
-        text-align: center;
         display: flex;
-        justify-content: center;
         align-items: center;
+        justify-content: center;
+        width: 30px; /* Розмір значка YouTube */
+        height: 30px;
+        padding: 0;
+        margin: 0;
+        background: url('youtube-icon.png') no-repeat center;
+        background-size: 100%;
+        border: 1px solid #FFD700;
+        border-radius: 50%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        text-indent: -9999px; /* Приховуємо текст "Підписатися" */
     }
 
     .category-buttons {
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr; /* Залишаємо по дві кнопки в рядок */
         gap: 10px;
         padding: 0 10px;
-        margin: 10px 0;
+        margin: 5px 0; /* Зменшено відступ зверху, щоб підтягнути кнопки */
         min-height: 180px;
     }
 
