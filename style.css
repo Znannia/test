@@ -632,156 +632,96 @@ ins.adsbygoogle {
     display: none;
 }
 
-@media (min-width: 600px) {
-    .extended-text {
-        display: block;
-    }
-}
-
-.subscribe-btn:focus, .category-btn:focus, .more-btn:focus {
-    outline: 2px solid #ffff00;
-    outline-offset: 2px;
-}
-
-@media (max-width: 900px) {
-    .video-actions {
-        flex-wrap: wrap;
-        gap: 10px;
-    }
-
-    .comment-btn, .more-btn {
-        padding: 8px 12px;
-        font-size: 14px;
-    }
-
-    .heart {
-        font-size: 20px;
-    }
-
-    .like-count {
-        font-size: 14px;
-    }
-
-    .comment-box textarea {
-        max-width: 260px;
-    }
-
-    .comment-list {
-        max-width: 260px;
-    }
-
-    #facts-list {
-        grid-template-columns: repeat(2, minmax(250px, 1fr));
-    }
-}
-
 @media (max-width: 600px) {
     header {
         flex-direction: column;
         align-items: center;
-        padding: 5px; /* Зменшено відступи */
-        min-height: 110px; /* Зменшено висоту вдвічі з 220px до 110px */
+        padding: 10px;
+        min-height: 220px;
     }
 
     .logo {
-        display: flex; /* Повертаємо логотип для використання */
-        align-items: center;
-        justify-content: center;
-        margin: 0;
-    }
-
-    .logo img {
-        width: 30px; /* Розмір логотипа для узгодження зі значком YouTube */
-        height: 30px;
-        border: 1px solid #FFD700;
-        border-radius: 50%;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        display: none;
     }
 
     .header-center {
         order: 1;
         text-align: center;
-        width: 100%; /* Для заповнення ширини */
     }
 
     .welcome-text {
-        font-size: 12px; /* Зменшено розмір для компактності */
-        margin: 3px 0;
+        font-size: 14px;
+        margin: 5px 0;
     }
 
     h1 {
-        font-size: 36px; /* Збільшено розмір тексту "Знання для всіх" */
-        margin: 3px 10px; /* Відступи по краях */
-        line-height: 1;
+        font-size: 28px;
+        margin: 5px 0;
     }
 
     .subtitle {
         font-size: 14px;
         padding: 3px 6px;
-        margin: 3px 0;
-        position: relative; /* Для вирівнювання з логотипом та значком */
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        margin: 5px 0;
     }
 
     .slogan {
-        font-size: 14px; /* Зменшено розмір для компактності */
-        margin: 3px 0;
+        font-size: 16px;
+        margin: 5px 0;
     }
 
     .header-right {
-        order: 2; /* Розташування після центрального блоку */
+        order: 3;
         display: flex;
         align-items: center;
         justify-content: space-between;
         width: 100%;
-        margin-top: 0; /* Прибрано зайвий відступ */
+        margin-top: 10px;
         padding: 0 5px;
-        position: absolute; /* Для вирівнювання з підзаголовком */
-        top: 60px; /* Точне позиціонування відносно підзаголовка */
-        left: 0;
-        right: 0;
     }
 
     .header-right::before {
-        content: none; /* Прибираємо псевдоелемент логотипа */
-    }
-
-    .subscribers {
-        display: none; /* Прибираємо "Нас уже понад" і кількість підписників */
+        content: '';
+        background: url('logo.png') no-repeat center;
+        background-size: 30px;
+        width: 30px;
+        height: 30px;
+        display: inline-block;
+        flex: 0 0 auto;
     }
 
     .subscribe-btn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 30px; /* Розмір значка YouTube */
-        height: 30px;
-        padding: 0;
+        font-size: 14px;
+        padding: 6px 12px;
         margin: 0;
-        background: url('youtube-icon.png') no-repeat center;
-        background-size: 100%;
-        border: 1px solid #FFD700;
-        border-radius: 50%;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-        text-indent: -9999px; /* Приховуємо текст "Підписатися" */
+        background-color: #ff0000;
+        color: #ffffff;
+        border-radius: 4px;
+        text-decoration: none;
+        flex: 1;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .category-buttons {
-        margin: 5px 0; /* Зменшено відступ зверху, щоб підтягнути кнопки */
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
         padding: 0 10px;
-        min-height: 100px; /* Зменшено висоту блоку кнопок */
+        margin: 10px 0;
+        min-height: 180px;
     }
 
     .category-btn {
         width: 100%;
-        padding: 10px;
-        font-size: 16px;
+        padding: 12px;
+        font-size: 20px;
         font-weight: 700;
         text-align: center;
         border-radius: 5px;
-        min-height: 50px;
+        min-height: 60px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -796,7 +736,6 @@ ins.adsbygoogle {
     .category-btn:nth-child(7) { order: 7; }
     .category-btn:nth-child(8) { order: 8; }
 
-    /* Решта стилів залишається без змін */
     .video-actions {
         flex-direction: row;
         justify-content: space-between;
