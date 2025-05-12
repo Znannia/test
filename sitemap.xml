@@ -73,7 +73,7 @@
     <loc>https://www.znannia.online/facts/articles/vatican-popes/</loc>
     <lastmod>2025-05-11</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.9ikte>
   </url>
   <url>
     <loc>https://www.znannia.online/facts/articles/rare-ukrainian-words/</loc>
@@ -114,6 +114,42 @@
   <url>
     <loc>https://www.znannia.online/facts/articles/amazing-cat-facts/</loc>
     <lastmod>2025-05-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.znannia.online/facts/articles/einstein/</loc>
+    <lastmod>2025-05-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.znannia.online/facts/articles/cars/</loc>
+    <lastmod>2025-05-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.znannia.online/facts/articles/drinks/</loc>
+    <lastmod>2025-05-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.znannia.online/facts/articles/football/</loc>
+    <lastmod>2025-05-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.znannia.online/facts/articles/rare-earth/</loc>
+    <lastmod>2025-05-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.znannia.online/facts/articles/money-facts/</loc>
+    <lastmod>2025-05-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
