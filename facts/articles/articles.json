@@ -52,5 +52,12 @@
         "url": "facts/articles/amazing-cat-facts/",
         "thumbnail": "facts/articles/amazing-cat-facts/cover.jpg",
         "description": "Відкрийте 20 дивовижних фактів про котів: від космічних пригод до унікальних рис. Перевірте знання у нашій вікторині!"
-    }
+    },
+    {
+  "title": "Альберт Анштайн: Біографія та Топ-10 Фактів",
+  "url": "facts/articles/einstein.html",
+  "thumbnail": "facts/articles/einstein/cover.jpg",
+  "description": "Дізнайтесь про життя Альберта Анштайна, його теорію відносності та втечу від нацистів.",
+  "keywords": "Альберт Анштайн, теорія відносності, Нобелівська премія, фотоефект"
+}
 ]
