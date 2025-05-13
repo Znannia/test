@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 * {
     box-sizing: border-box;
 }
@@ -36,6 +38,30 @@ header::before {
     pointer-events: none;
 }
 
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo img {
+    width: 50px;
+    height: auto;
+    border: 1px solid #FFD700;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.youtube-icon img {
+    width: 80px;
+    height: auto;
+    margin-top: 10px;
+    border-radius: 4px;
+    background-color: transparent;
+    padding: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
 .header-center {
     flex: 1;
     text-align: center;
@@ -64,7 +90,7 @@ h1 a {
 
 .subtitle {
     font-size: 22px;
-    background-color: #082020; /* Темніший фон для кращого контрасту */
+    background-color: #145252;
     color: #ffffff;
     display: inline-block;
     padding: 5px 10px;
@@ -79,6 +105,47 @@ h1 a {
     margin: 5px 0;
 }
 
+.header-right {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.subscribers {
+    font-size: 18px;
+    color: #ffff00;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.subscribers-count {
+    font-size: 28px;
+    font-weight: 900;
+    background: linear-gradient(to right, #FFFF00, #FFA500);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    display: block;
+    margin-top: 5px;
+}
+
+.subscribe-btn {
+    background-color: #ff0000;
+    color: #ffffff;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    width: fit-content;
+}
+
 .divider {
     height: 2px;
     background-color: #ffffff;
@@ -90,7 +157,7 @@ h1 a {
     justify-content: center;
     flex-wrap: wrap;
     gap: 10px;
-    margin: 10px 0;
+    margin: 10px 0; /* Зменшено з 20px */
 }
 
 .category-btn {
@@ -106,11 +173,6 @@ h1 a {
 
 .category-btn:hover {
     background-color: #e6b800;
-}
-
-.category-btn:focus {
-    outline: 2px solid #FFD700;
-    outline-offset: 2px;
 }
 
 .latest-videos, .random-videos, .category-videos, .facts-section, .facts {
@@ -494,7 +556,7 @@ footer {
 }
 
 .about, .contact, .collaboration, .privacy {
-    padding: 10px;
+    padding: 10px; /* Зменшено з 20px */
     max-width: 800px;
     margin: 0 auto;
 }
@@ -503,18 +565,18 @@ footer {
     color: #ffff00;
     text-align: center;
     font-size: 28px;
-    margin: 5px 0 10px;
+    margin: 5px 0 10px; /* Додано для зменшення відступів */
 }
 
 .about-text, .contact-text, .collaboration-text, .privacy-text {
     background-color: #145252;
-    padding: 15px;
+    padding: 15px; /* Зменшено з 20px */
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .about-text p, .contact-text p, .collaboration-text p, .privacy-text p {
-    margin: 5px 0;
+    margin: 5px 0; /* Зменшено з 10px */
     line-height: 1.6;
 }
 
@@ -527,11 +589,9 @@ footer {
     color: #e6b800;
 }
 
+/* Стиль для рекламного блоку */
 ins.adsbygoogle {
-    margin: 0.5rem auto !important;
-    display: block;
-    width: 100%;
-    min-height: 280px; /* Зарезервувати місце для реклами */
+    margin: 0.5rem auto !important; /* Зменшено з 1rem */
 }
 
 .category-description {
@@ -572,46 +632,120 @@ ins.adsbygoogle {
     display: none;
 }
 
+@media (min-width: 600px) {
+    .extended-text {
+        display: block;
+    }
+}
+
+.subscribe-btn:focus, .category-btn:focus, .more-btn:focus {
+    outline: 2px solid #ffff00;
+    outline-offset: 2px;
+}
+
+@media (max-width: 900px) {
+    .video-actions {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .comment-btn, .more-btn {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+
+    .heart {
+        font-size: 20px;
+    }
+
+    .like-count {
+        font-size: 14px;
+    }
+
+    .comment-box textarea {
+        max-width: 260px;
+    }
+
+    .comment-list {
+        max-width: 260px;
+    }
+
+    #facts-list {
+        grid-template-columns: repeat(2, minmax(250px, 1fr));
+    }
+}
+
 @media (max-width: 600px) {
     header {
         flex-direction: column;
         align-items: center;
         padding: 10px;
-        min-height: 130px;
+        min-height: 220px;
+    }
+
+    .logo {
+        display: none;
     }
 
     .header-center {
         order: 1;
         text-align: center;
-        width: 100%;
     }
 
     .welcome-text {
-        font-size: 12px;
+        font-size: 14px;
         margin: 5px 0;
-        line-height: 1;
     }
 
     h1 {
-        font-size: 36px;
-        margin: 5px 10px;
-        line-height: 1;
+        font-size: 28px;
+        margin: 5px 0;
     }
 
     .subtitle {
         font-size: 14px;
         padding: 3px 6px;
         margin: 5px 0;
-        line-height: 1.2;
-        background-color: #082020; /* Темніший фон */
-        color: #ffffff;
     }
 
     .slogan {
-        font-size: 14px;
+        font-size: 16px;
         margin: 5px 0;
-        line-height: 1;
-        color: #FFD700;
+    }
+
+    .header-right {
+        order: 3;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        margin-top: 10px;
+        padding: 0 5px;
+    }
+
+    .header-right::before {
+        content: '';
+        background: url('logo.png') no-repeat center;
+        background-size: 30px;
+        width: 30px;
+        height: 30px;
+        display: inline-block;
+        flex: 0 0 auto;
+    }
+
+    .subscribe-btn {
+        font-size: 14px;
+        padding: 6px 12px;
+        margin: 0;
+        background-color: #ff0000;
+        color: #ffffff;
+        border-radius: 4px;
+        text-decoration: none;
+        flex: 1;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .category-buttons {
@@ -735,24 +869,137 @@ ins.adsbygoogle {
         border: none;
     }
 
+    /* Додано адаптивні стилі для зменшення відступів */
     .about, .contact, .collaboration, .privacy {
-        padding: 5px;
+        padding: 5px; /* Зменшено для мобільних */
     }
 
     .about-text, .contact-text, .collaboration-text, .privacy-text {
-        padding: 10px;
+        padding: 10px; /* Зменшено для мобільних */
     }
 
     .about-text p, .contact-text p, .collaboration-text p, .privacy-text p {
-        margin: 3px 0;
+        margin: 3px 0; /* Зменшено для мобільних */
     }
 
     .about h2, .contact h2, .collaboration h2, .privacy h2 {
-        margin: 3px 0 8px;
+        margin: 3px 0 8px; /* Зменшено для мобільних */
     }
 
     ins.adsbygoogle {
-        margin: 0.25rem auto !important;
-        min-height: 250px; /* Зарезервувати місце для реклами */
+        margin: 0.25rem auto !important; /* Зменшено для мобільних */
+    }
+}
+
+/* Стилі для статей */
+.facts-content {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #145252;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.facts-content h2 {
+    color: #ffff00;
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-align: center;
+    background: linear-gradient(to right, #FFD700, #FF0000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.article-text {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #ffffff;
+}
+
+.article-section {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #1a3c34;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.article-section h3 {
+    color: #ffcc00;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.article-section p {
+    margin-bottom: 10px;
+}
+
+.article-section a {
+    color: #ffcc00;
+    text-decoration: none;
+}
+
+.article-section a:hover {
+    color: #e6b800;
+}
+
+.article-image {
+    max-width: 300px;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    float: right;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    margin: 20px 0;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+/* Адаптивність для статей */
+@media (max-width: 600px) {
+    .facts-content {
+        padding: 10px;
+    }
+
+    .facts-content h2 {
+        font-size: 24px;
+    }
+
+    .article-text {
+        font-size: 14px;
+    }
+
+    .article-section {
+        padding: 10px;
+    }
+
+    .article-section h3 {
+        font-size: 20px;
+    }
+
+    .article-image {
+        float: none;
+        max-width: 100%;
+        margin: 10px auto;
+        display: block;
     }
 }
