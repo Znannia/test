@@ -38,6 +38,7 @@ async function fetchWithKey(e) {
 }
 
 async function fetchSubscribers() {
+  if (window.innerWidth <= 600) return; // Пропускаємо запит для мобільних
   const e = document.getElementById("subscribers");
   if (!e) return;
   const t = "subscribersCount", a = "subscribersTime", n = 864e5, s = new Date, i = s.getTime(), r = s.getHours() === 17;
@@ -97,7 +98,7 @@ async function renderVideos(e, t, a = false) {
     "contentUrl": "https://www.youtube.com/watch?v=VIDEO_ID"
   };
   if (e[0]) {
-    const i = a ? e[0].id.videoId : e[0].snippet.resourceId.videoId;
+    const i = a ? e[0].id.videoId : e.snippet.resourceId.videoId;
     s.thumbnailUrl = `https://img.youtube.com/vi/${i}/maxresdefault.jpg`;
     s.contentUrl = `https://www.youtube.com/watch?v=${i}`;
     n.text = JSON.stringify(s);
@@ -170,7 +171,7 @@ async function renderVideos(e, t, a = false) {
   });
 }
 
-const VIDEOS_PER_PAGE = 3; // Обмежено до 3 для .latest-videos
+const VIDEOS_PER_PAGE = 3;
 
 async function fetchLatestVideos() {
   const e = document.getElementById("latest-videos");
@@ -210,7 +211,7 @@ async function fetchRandomVideos() {
   let currentPage = 1;
   if (s && i && r - i < n) {
     let videos = JSON.parse(s).filter(e => e.snippet && e.snippet.resourceId && e.snippet.resourceId.videoId && e.snippet.title !== "Private video" && e.snippet.title !== "Deleted video");
-    const paginatedVideos = videos.slice(0, VIDEOS_PER_PAGE * 3); // Завантажуємо 3 ряди
+    const paginatedVideos = videos.slice(0, VIDEOS_PER_PAGE * 3);
     await renderVideos(paginatedVideos, e);
     if (videos.length > VIDEOS_PER_PAGE * 3) {
       const loadMoreBtn = document.createElement("button");
@@ -244,10 +245,7 @@ async function fetchRandomVideos() {
     return;
   }
   try {
-    const n = window.innerWidth;
-    let s = 15; // 3 ряди по 5 відео для широких екранів
-    if (n >= 600 && n < 900) s = 12; // 3 ряди по 4 відео
-    else if (n < 600) s = 9; // 3 ряди по 3 відео
+    const s = 9; // Обмежуємо до 9 відео для всіх пристроїв
     const i = [], r = Object.keys(playlistIds);
     for (const t of r) {
       const a = playlistIds[t], n = await fetchWithKey(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet,status&playlistId=${a}&maxResults=50`);
@@ -258,7 +256,7 @@ async function fetchRandomVideos() {
     const c = i.map(e => e.snippet.resourceId.videoId), o = await filterNonShorts(c);
     const l = i.filter(e => o.includes(e.snippet.resourceId.videoId));
     l.sort(() => Math.random() - 0.5);
-    const paginatedVideos = l.slice(0, s); // Завантажуємо 9, 12 або 15 відео
+    const paginatedVideos = l.slice(0, s);
     if (paginatedVideos.length === 0) {
       e.innerHTML = "<p>Немає доступних відео. Спробуйте пізніше.</p>";
       e.classList.remove("loading");
@@ -409,42 +407,56 @@ document.getElementById("categories-btn")?.addEventListener("click", () => {
   e.previousElementSibling.setAttribute("aria-expanded", t);
 });
 
-// Оновлена логіка для завантаження статей
 document.addEventListener('DOMContentLoaded', () => {
   const factsList = document.getElementById('facts-list');
-  if (!factsList) return;
-
-  fetch('facts/articles/articles.json')
-    .then(response => response.json())
-    .then(articles => {
-      factsList.innerHTML = ''; // Очищаємо статичний контент
-
-      // Відображаємо всі статті на facts.html, 6 статей на інших сторінках
-      const articlesToDisplay = window.location.pathname.includes('facts.html') ? articles : articles.slice(0, 6);
-
-      articlesToDisplay.forEach(article => {
-        const factItem = document.createElement('div');
-        factItem.className = 'fact-item';
-        factItem.innerHTML = `
-          <a href="${article.url}" class="fact-link">
-            <img src="${article.thumbnail}" alt="${article.title}" class="thumbnail" loading="lazy">
-            <h4>${article.title}</h4>
-          </a>
-          <div class="fact-lead">
-            <p>${article.description}...</p>
-            <a href="${article.url}" class="read-more-btn">Читати далі</a>
-          </div>
-        `;
-        factsList.appendChild(factItem);
+  if (factsList) {
+    fetch('facts/articles/articles.json')
+      .then(response => response.json())
+      .then(articles => {
+        factsList.innerHTML = '';
+        const articlesToDisplay = window.location.pathname.includes('facts.html') ? articles : articles.slice(0, 6);
+        articlesToDisplay.forEach(article => {
+          const factItem = document.createElement('div');
+          factItem.className = 'fact-item';
+          factItem.innerHTML = `
+            <a href="${article.url}" class="fact-link">
+              <img src="${article.thumbnail}" alt="${article.title}" class="thumbnail" loading="lazy">
+              <h4>${article.title}</h4>
+            </a>
+            <div class="fact-lead">
+              <p>${article.description}...</p>
+              <a href="${article.url}" class="read-more-btn">Читати далі</a>
+            </div>
+          `;
+          factsList.appendChild(factItem);
+        });
+      })
+      .catch(error => {
+        console.error('Помилка завантаження статей:', error);
+        factsList.innerHTML = '<p>Не вдалося завантажити статті. Спробуйте пізніше.</p>';
       });
-    })
-    .catch(error => {
-      console.error('Помилка завантаження статей:', error);
-      factsList.innerHTML = '<p>Не вдалося завантажити статті. Спробуйте пізніше.</p>';
-    });
-});
+  }
 
-fetchSubscribers();
-document.getElementById("latest-videos") && fetchLatestVideos();
-document.getElementById("random-videos") && fetchRandomVideos();
-document.getElementById("category-videos") && fetchCategoryVideos();
+  // Ліниве завантаження відео
+  const latestVideosSection = document.getElementById("latest-videos");
+  const randomVideosSection = document.getElementById("random-videos");
+  const categoryVideosSection = document.getElementById("category-videos");
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const target = entry.target;
+        if (target === latestVideosSection) fetchLatestVideos();
+        if (target === randomVideosSection) fetchRandomVideos();
+        if (target === categoryVideosSection) fetchCategoryVideos();
+        observer.unobserve(target);
+      }
+    });
+  }, { rootMargin: "100px" });
+
+  if (latestVideosSection) observer.observe(latestVideosSection);
+  if (randomVideosSection) observer.observe(randomVideosSection);
+  if (categoryVideosSection) observer.observe(categoryVideosSection);
+
+  fetchSubscribers();
+});
