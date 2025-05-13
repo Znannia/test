@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
-
 * {
     box-sizing: border-box;
 }
@@ -38,30 +36,6 @@ header::before {
     pointer-events: none;
 }
 
-.logo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.logo img {
-    width: 50px;
-    height: auto;
-    border: 1px solid #FFD700;
-    border-radius: 50%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.youtube-icon img {
-    width: 80px;
-    height: auto;
-    margin-top: 10px;
-    border-radius: 4px;
-    background-color: transparent;
-    padding: 0;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
 .header-center {
     flex: 1;
     text-align: center;
@@ -90,7 +64,7 @@ h1 a {
 
 .subtitle {
     font-size: 22px;
-    background-color: #145252;
+    background-color: #082020; /* Темніший фон для кращого контрасту */
     color: #ffffff;
     display: inline-block;
     padding: 5px 10px;
@@ -105,47 +79,6 @@ h1 a {
     margin: 5px 0;
 }
 
-.header-right {
-    text-align: right;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: center;
-}
-
-.subscribers {
-    font-size: 18px;
-    color: #ffff00;
-    font-weight: bold;
-    margin-bottom: 10px;
-    text-align: center;
-}
-
-.subscribers-count {
-    font-size: 28px;
-    font-weight: 900;
-    background: linear-gradient(to right, #FFFF00, #FFA500);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    display: block;
-    margin-top: 5px;
-}
-
-.subscribe-btn {
-    background-color: #ff0000;
-    color: #ffffff;
-    padding: 8px 16px;
-    text-decoration: none;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    width: fit-content;
-}
-
 .divider {
     height: 2px;
     background-color: #ffffff;
@@ -157,7 +90,7 @@ h1 a {
     justify-content: center;
     flex-wrap: wrap;
     gap: 10px;
-    margin: 10px 0; /* Зменшено з 20px */
+    margin: 10px 0;
 }
 
 .category-btn {
@@ -173,6 +106,11 @@ h1 a {
 
 .category-btn:hover {
     background-color: #e6b800;
+}
+
+.category-btn:focus {
+    outline: 2px solid #FFD700;
+    outline-offset: 2px;
 }
 
 .latest-videos, .random-videos, .category-videos, .facts-section, .facts {
@@ -556,7 +494,7 @@ footer {
 }
 
 .about, .contact, .collaboration, .privacy {
-    padding: 10px; /* Зменшено з 20px */
+    padding: 10px;
     max-width: 800px;
     margin: 0 auto;
 }
@@ -565,18 +503,18 @@ footer {
     color: #ffff00;
     text-align: center;
     font-size: 28px;
-    margin: 5px 0 10px; /* Додано для зменшення відступів */
+    margin: 5px 0 10px;
 }
 
 .about-text, .contact-text, .collaboration-text, .privacy-text {
     background-color: #145252;
-    padding: 15px; /* Зменшено з 20px */
+    padding: 15px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .about-text p, .contact-text p, .collaboration-text p, .privacy-text p {
-    margin: 5px 0; /* Зменшено з 10px */
+    margin: 5px 0;
     line-height: 1.6;
 }
 
@@ -589,9 +527,11 @@ footer {
     color: #e6b800;
 }
 
-/* Стиль для рекламного блоку */
 ins.adsbygoogle {
-    margin: 0.5rem auto !important; /* Зменшено з 1rem */
+    margin: 0.5rem auto !important;
+    display: block;
+    width: 100%;
+    min-height: 280px; /* Зарезервувати місце для реклами */
 }
 
 .category-description {
@@ -636,12 +576,8 @@ ins.adsbygoogle {
     header {
         flex-direction: column;
         align-items: center;
-        padding: 10px; /* Додаємо трохи більше відступів */
-        min-height: 130px; /* Збільшуємо висоту для "повітря" */
-    }
-
-    .logo {
-        display: none;
+        padding: 10px;
+        min-height: 130px;
     }
 
     .header-center {
@@ -651,35 +587,31 @@ ins.adsbygoogle {
     }
 
     .welcome-text {
-        font-size: 12px; /* Зменшено для ієрархії */
-        margin: 5px 0; /* Додаємо більше "повітря" */
+        font-size: 12px;
+        margin: 5px 0;
         line-height: 1;
     }
 
     h1 {
         font-size: 36px;
-        margin: 5px 10px; /* Додаємо більше "повітря" */
+        margin: 5px 10px;
         line-height: 1;
     }
 
     .subtitle {
         font-size: 14px;
         padding: 3px 6px;
-        margin: 5px 0; /* Додаємо більше "повітря" */
+        margin: 5px 0;
         line-height: 1.2;
-        background-color: #145252; /* Залишаємо фон */
+        background-color: #082020; /* Темніший фон */
         color: #ffffff;
     }
 
     .slogan {
-        font-size: 14px; /* Зменшено для гармонії */
-        margin: 5px 0; /* Додаємо більше "повітря" */
+        font-size: 14px;
+        margin: 5px 0;
         line-height: 1;
-        color: #FFD700; /* Змінюємо на світло-золотий для гармонії з h1 */
-    }
-
-    .header-right {
-        display: none;
+        color: #FFD700;
     }
 
     .category-buttons {
@@ -687,7 +619,7 @@ ins.adsbygoogle {
         grid-template-columns: 1fr 1fr;
         gap: 10px;
         padding: 0 10px;
-        margin: 10px 0; /* Збільшуємо відступ зверху для балансу */
+        margin: 10px 0;
         min-height: 180px;
     }
 
@@ -821,5 +753,6 @@ ins.adsbygoogle {
 
     ins.adsbygoogle {
         margin: 0.25rem auto !important;
+        min-height: 250px; /* Зарезервувати місце для реклами */
     }
 }
